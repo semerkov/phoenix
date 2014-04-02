@@ -154,8 +154,7 @@ public class ChessController {
         stopComputerThinking();
         this.humanIsWhite = humanIsWhite;
         humanPlayer = new HumanPlayer();
-        computerPlayer = new ComputerPlayer();
-        computerPlayer.verbose = verbose;
+        computerPlayer = new ComputerPlayer(verbose);
         computerPlayer.setTTLogSize(ttLogSize);
         computerPlayer.setListener(listener);
         if (humanIsWhite) {

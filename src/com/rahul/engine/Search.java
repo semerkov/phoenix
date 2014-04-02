@@ -263,11 +263,7 @@ public class Search {
                             lmrS = plyScale;
                     }
                 }
-/*                long nodes0 = nodes;
-                long qNodes0 = qNodes;
-                System.out.printf("%2d %5s %5d %5d %6s %6s ",
-                        mi, "-", alpha, beta, "-", "-");
-                System.out.printf("%-6s...\n", TextIO.moveToUCIString(m)); */
+
                 pos.makeMove(m, ui);
                 SearchTreeInfo sti = searchTreeInfo[0];
                 sti.currentMove = m;
@@ -344,9 +340,6 @@ public class Search {
                         }
                     }
                     if (verbose) {
-/*                        System.out.printf("%2d %5d %5d %5d %6d %6d ",
-                                mi, score, alpha, beta, nodes-nodes0, qNodes-qNodes0);
-                        System.out.printf("%-6s\n", TextIO.moveToUCIString(m)); */
                         System.out.printf("%-6s %6d %6d %6d%s %s\n",
                                 TextIO.moveToString(pos, m, false), score,
                                 nodes, qNodes, (score > alpha ? " *" : ""), PV);
@@ -806,15 +799,7 @@ public class Search {
                 nodes++;
                 totalNodes++;
                 sti.currentMove = m;
-/*              long nodes0 = nodes;
-                long qNodes0 = qNodes;
-                if ((ply < 3) && (newDepth > plyScale)) {
-                    System.out.printf("%2d %5s %5d %5d %6s %6s ",
-                            mi, "-", alpha, beta, "-", "-");
-                    for (int i = 0; i < ply; i++)
-                        System.out.printf("      ");
-                    System.out.printf("%-6s...\n", TextIO.moveToUCIString(m));
-                } */
+
                 sti.lmr = lmr;
                 score = -negaScout(-b, -alpha, ply + 1, newDepth, newCaptureSquare, givesCheck);
                 if (((lmr > 0) && (score > alpha)) ||
@@ -823,13 +808,7 @@ public class Search {
                     newDepth += lmr;
                     score = -negaScout(-beta, -alpha, ply + 1, newDepth, newCaptureSquare, givesCheck);
                 }
-/*              if (ply <= 3) {
-                    System.out.printf("%2d %5d %5d %5d %6d %6d ",
-                            mi, score, alpha, beta, nodes-nodes0, qNodes-qNodes0);
-                    for (int i = 0; i < ply; i++)
-                        System.out.printf("      ");
-                    System.out.printf("%-6s\n", TextIO.moveToUCIString(m));
-                }*/
+
                 posHashListSize--;
                 pos.unMakeMove(m, ui);
             }

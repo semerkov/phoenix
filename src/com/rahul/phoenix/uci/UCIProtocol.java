@@ -83,7 +83,7 @@ public class UCIProtocol {
             String cmd = tokens[0];
             if (cmd.equals("uci")) {
                 os.printf("id name %s%n", ComputerPlayer.engineName);
-                os.printf("id author Peter Osterlund%n");
+                os.printf("id author Peter Osterlund and Rahul A R%n");
                 EngineControl.printOptions(os);
                 os.printf("uciok%n");
             } else if (cmd.equals("isready")) {

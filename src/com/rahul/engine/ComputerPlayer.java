@@ -50,12 +50,14 @@ public class ComputerPlayer implements Player {
     boolean randomMode;
     Search currentSearch;
 
-    public ComputerPlayer() {
+    public ComputerPlayer(boolean verbose) {
         minTimeMillis = 10000;
         maxTimeMillis = 10000;
-        maxDepth = 100;
+        this.verbose = verbose;
+        // SET DEPTH HERE!! (Default : 100)
+        maxDepth = 4;
+        
         maxNodes = -1;
-        verbose = true;
         setTTLogSize(15);
         book = new Book(verbose);
         bookEnabled = true;
@@ -97,7 +99,7 @@ public class ComputerPlayer implements Player {
         if (bookEnabled) {
             Move bookMove = book.getBookMove(pos);
             if (bookMove != null) {
-                System.out.printf("Book moves: %s\n", book.getAllBookMoves(pos));
+                if(verbose) System.out.printf("Book moves: %s\n", book.getAllBookMoves(pos));
                 return TextIO.moveToString(pos, bookMove, false);
             }
         }
