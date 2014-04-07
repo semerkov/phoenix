@@ -6,7 +6,7 @@ import com.rahul.engine.ComputerPlayer;
 
 public class Tournament {
 	public static void main(String[] args) {
-		boolean verbose = false;
+		boolean verbose = true;
         ComputerPlayer whitePlayer = new ComputerPlayer(verbose);
         ComputerPlayer blackPlayer = new ComputerPlayer(verbose);
         whitePlayer.setTTLogSize(19);

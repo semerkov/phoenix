@@ -1,1 +1,11 @@
+THEORY
+* Individual 		: A candidate solution to the problem
+* Chromosomes 		: Properties of an individual which change during evolution
+* Fitness Function 	: Objective function which needs to be optimized
+* Generation		: An iteration in the evolution of the process where the fittest 
+					  individuals' genome is modified (recombined and mutated) to produce 
+					  a new offspring (individual) for the next generation 
+
+IMPLEMENTATION
 * set Depth in ComputerPlayer
+* Change the constructor for Evaluate from ComputerPlayer -> Search
