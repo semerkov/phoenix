@@ -200,7 +200,9 @@ public class Evaluate {
 	private long wPawnAttacks, bPawnAttacks; // Squares attacked by white/black
 												// pawns
 
-	/** Constructor. */
+	/**
+	 * Default constructor
+	 */
 	public Evaluate() {
 		if (kpkTable == null)
 			kpkTable = readTable("/kpk.bitbase", 2 * 32 * 64 * 48 / 8);
@@ -208,6 +210,10 @@ public class Evaluate {
 			krkpTable = readTable("/krkp.winmasks", 2 * 32 * 48 * 8);
 	}
 
+	/**
+	 * Constructor for evolution/training purposes
+	 * @param genes
+	 */
 	public Evaluate(double[] genes) {
 		this();
 		double[][] blackPV = { kt1b, qt1b, rt1b, bt1b, nt1b, pt1b, kt2b, bt2b,

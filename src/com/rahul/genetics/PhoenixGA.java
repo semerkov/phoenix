@@ -1,8 +1,10 @@
 package com.rahul.genetics;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import jenes.GenerationEventListener;
 import jenes.GeneticAlgorithm;
 import jenes.chromosome.DoubleChromosome;
 import jenes.population.Fitness;
@@ -12,10 +14,12 @@ import jenes.stage.operator.common.OnePointCrossover;
 import jenes.stage.operator.common.SimpleMutator;
 import jenes.stage.operator.common.TournamentSelector;
 
-public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> implements
-		GenerationEventListener<DoubleChromosome> {
+import com.rahul.phoenix.tui.TUIGame;
 
-	private double wins;
+public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
+
+	/** This is a list of players who compete in the tournament */
+	private ArrayList<GeneticPlayer> players;
 
 	private static final int MAX_WEIGHT = 100;
 	private static final int MIN_WEIGHT = -100;
@@ -28,7 +32,8 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> implements
 
 		@Override
 		public void evaluate(Individual<DoubleChromosome> individual) {
-
+			// Fitness values are already set during the Tournament
+			System.out.println(individual.getScore());
 		}
 	}
 
@@ -40,7 +45,6 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> implements
 						chainLength, MIN_WEIGHT, MAX_WEIGHT)), popsize),
 				generations);
 
-
 		this.setFitness(this.maximize);
 		this.setElitism(ELITES);
 		this.setElitismStrategy(ElitismStrategy.WORST);
@@ -50,19 +54,52 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> implements
 		this.addStage(new SimpleMutator<DoubleChromosome>(0.02));
 	}
 
-	@Override
-	protected void onInit(long time) {
-		super.onInit(time);
-	}
-
-	@Override
-	public void onGeneration(GeneticAlgorithm<DoubleChromosome> ga, long time) {
-
-	}
-	
 	@SuppressWarnings("deprecation")
 	private void playTournament() {
-		Population<DoubleChromosome> pop = this.getCurrentPopulation();
-		List<Individual<DoubleChromosome>> individuals = pop.getAllLegalIndividuals();
+		Population<DoubleChromosome> pop = this.getLastPopulation();
+		List<Individual<DoubleChromosome>> individuals = pop.getIndividuals();
+		Random random = new Random();
+		double score = 0.0;
+		int numOfPlayers = individuals.size();
+		players = new ArrayList<GeneticPlayer>();
+
+		for (int playerIndex = 0; playerIndex < numOfPlayers; playerIndex++) {
+			players.add(new GeneticPlayer(individuals.get(playerIndex)
+					.getChromosome().getValues()));
+		}
+		for (int playerIndex = 0; playerIndex < numOfPlayers; playerIndex++) {
+			GeneticPlayer player1 = players.get(playerIndex);
+			int opponentIndex;
+			while (player1.getNumOfGames() < 3) {
+				while ((opponentIndex = random.nextInt(numOfPlayers)) == playerIndex)
+					;
+				GeneticPlayer player2 = players.get(opponentIndex);
+				player1.setNumOfGames(player1.getNumOfGames() + 1);
+				player2.setNumOfGames(player2.getNumOfGames() + 1);
+				TUIGame game = new TUIGame(player1.getPlayer(),
+						player2.getPlayer());
+				try {
+					score = getScore(game.play(false));
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				player1.setNumOfWins(player1.getNumOfWins() + score);
+				player2.setNumOfWins(player2.getNumOfWins() + (1 - score));
+			}
+			// Set fitness value for the individual
+			individuals.get(playerIndex).setScore(
+					player1.getNumOfWins() / player1.getNumOfGames());
+		}
+	}
+
+	private double getScore(String finalScore) {
+		try {
+			return Double.parseDouble(finalScore.split("-")[0]);
+		} catch (Exception e) {
+			System.out
+					.println("Error converting to double. PhoenixGA -> getScore");
+			System.exit(-1);
+		}
+		return 0.0;
 	}
 }

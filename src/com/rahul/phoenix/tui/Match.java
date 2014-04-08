@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import com.rahul.engine.ComputerPlayer;
 
-public class Tournament {
+public class Match {
 	public static void main(String[] args) {
-		boolean verbose = true;
+		boolean verbose = false;
         ComputerPlayer whitePlayer = new ComputerPlayer(verbose);
         ComputerPlayer blackPlayer = new ComputerPlayer(verbose);
         whitePlayer.setTTLogSize(19);

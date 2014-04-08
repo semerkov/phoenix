@@ -181,8 +181,9 @@ public class TUIGame extends Game {
 
 	/**
 	 * Administrate a game between two players, human or computer.
+	 * @return 
 	 */
-	public void play(boolean verbose) throws IOException {
+	public String play(boolean verbose) throws IOException {
 		handleCommand("new");
 		while (true) {
 			// Print last move
@@ -215,7 +216,7 @@ public class TUIGame extends Game {
 			}
 			if(quitCheck(getGameState())) {
 				System.out.println(finalResult);
-				return;
+				return finalResult;
 			}
 
 			// Get command from current player and act on it
@@ -223,7 +224,7 @@ public class TUIGame extends Game {
 			String moveStr = pl.getCommand(new Position(pos), haveDrawOffer(),
 					getHistory());
 			if (moveStr.equals("quit")) {
-				return;
+				return null;
 			} else {
 				boolean ok = processString(moveStr);
 				if (!ok) {

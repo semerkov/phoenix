@@ -49,7 +49,14 @@ public class ComputerPlayer implements Player {
     boolean bookEnabled;
     boolean randomMode;
     Search currentSearch;
+    
+    // FOR EVOLUTION / TRAINING ONLY
+    double[] genes = null;
 
+    /**
+     * Constructor; With or without logging
+     * @param verbose
+     */
     public ComputerPlayer(boolean verbose) {
         minTimeMillis = 10000;
         maxTimeMillis = 10000;
@@ -62,6 +69,16 @@ public class ComputerPlayer implements Player {
         book = new Book(verbose);
         bookEnabled = true;
         randomMode = false;
+    }
+    
+    /**
+     * Call this only during evolution/training
+     * @param verbose
+     * @param genes
+     */
+    public ComputerPlayer(boolean verbose, double[] genes) {
+    	this(verbose);
+    	this.genes = genes;
     }
 
     public void setTTLogSize(int logSize) {
@@ -83,7 +100,7 @@ public class ComputerPlayer implements Player {
         }
         tt.nextGeneration();
         History ht = new History();
-        Search sc = new Search(pos, posHashList, posHashListSize, tt, ht);
+        Search sc = new Search(pos, posHashList, posHashListSize, tt, ht, genes);
 
         // Determine all legal moves
         MoveGen.MoveList moves = new MoveGen().pseudoLegalMoves(pos);
