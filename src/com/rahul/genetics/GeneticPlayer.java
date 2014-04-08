@@ -5,13 +5,17 @@ import com.rahul.engine.ComputerPlayer;
 public class GeneticPlayer {
 	private int numOfGames;
 	private double numOfWins;
+	private double[] genes;
+	
 	private ComputerPlayer player;
-	
+
 	private static final int LOG_SIZE = 10;
-	
+
 	public GeneticPlayer(double[] genes) {
 		numOfGames = 0;
 		numOfWins = 0;
+		
+		this.genes = genes;
 		player = new ComputerPlayer(false, genes);
 		player.setTTLogSize(LOG_SIZE);
 	}
@@ -34,5 +38,9 @@ public class GeneticPlayer {
 
 	public ComputerPlayer getPlayer() {
 		return player;
+	}
+
+	public double[] getGenes() {
+		return genes;
 	}
 }

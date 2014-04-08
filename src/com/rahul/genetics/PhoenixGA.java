@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import jenes.AlgorithmEventListener;
+import jenes.GenerationEventListener;
 import jenes.GeneticAlgorithm;
 import jenes.chromosome.DoubleChromosome;
 import jenes.population.Fitness;
@@ -33,7 +35,6 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
 		@Override
 		public void evaluate(Individual<DoubleChromosome> individual) {
 			// Fitness values are already set during the Tournament
-			System.out.println(individual.getScore());
 		}
 	}
 
@@ -56,7 +57,7 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
 
 	@SuppressWarnings("deprecation")
 	private void playTournament() {
-		Population<DoubleChromosome> pop = this.getLastPopulation();
+		Population<DoubleChromosome> pop = this.getCurrentPopulation();
 		List<Individual<DoubleChromosome>> individuals = pop.getIndividuals();
 		Random random = new Random();
 		double score = 0.0;
@@ -90,6 +91,12 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
 			individuals.get(playerIndex).setScore(
 					player1.getNumOfWins() / player1.getNumOfGames());
 		}
+	}
+
+	@Override
+	protected void onGeneration(long time) {
+		super.onGeneration(time);
+		playTournament();
 	}
 
 	private double getScore(String finalScore) {

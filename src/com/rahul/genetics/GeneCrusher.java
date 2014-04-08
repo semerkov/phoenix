@@ -1,10 +1,10 @@
 package com.rahul.genetics;
 
+import jenes.tutorials.utils.Utils;
 import jenes.population.Individual;
 import jenes.population.Population;
 import jenes.population.Population.Statistics;
 import jenes.population.Population.Statistics.Group;
-import jenes.tutorials.utils.Utils;
 
 public class GeneCrusher {
 	
