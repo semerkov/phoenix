@@ -215,7 +215,7 @@ public class TUIGame extends Game {
 				System.out.printf("%s%n", stateStr);
 			}
 			if(quitCheck(getGameState())) {
-				System.out.println(finalResult);
+				if(verbose) System.out.println(finalResult);
 				return finalResult;
 			}
 

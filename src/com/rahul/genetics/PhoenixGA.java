@@ -2,11 +2,10 @@ package com.rahul.genetics;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import jenes.AlgorithmEventListener;
-import jenes.GenerationEventListener;
 import jenes.GeneticAlgorithm;
 import jenes.chromosome.DoubleChromosome;
 import jenes.population.Fitness;
@@ -96,7 +95,28 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
 	@Override
 	protected void onGeneration(long time) {
 		super.onGeneration(time);
+		
 		playTournament();
+		double[] wins = new double[players.size()];
+		for (int i = 0; i < players.size(); i++) {
+			wins[i] = players.get(i).getNumOfWins();
+		}
+		Arrays.sort(wins);
+
+		double highestScore = wins[wins.length - 1];
+		for (GeneticPlayer player : players) {
+			if (player.getNumOfWins() == highestScore) {
+				System.out.println(this.getGeneration() + " : "
+						+ prettyPrint(player.getGenes()));
+			}
+		}
+	}
+
+	private String prettyPrint(double[] genes) {
+		StringBuilder sb = new StringBuilder();
+		for (double d : genes)
+			sb.append(d + " ");
+		return sb.toString();
 	}
 
 	private double getScore(String finalScore) {

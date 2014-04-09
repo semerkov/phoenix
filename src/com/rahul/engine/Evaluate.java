@@ -119,6 +119,8 @@ public class Evaluate {
 
 	public static double[] kt1w, qt1w, rt1w, bt1w, nt1w, pt1w, kt2w, bt2w,
 			nt2w, pt2w;
+
+	// boolean strong = false;
 	static {
 		kt1w = new double[64];
 		qt1w = new double[64];
@@ -212,15 +214,17 @@ public class Evaluate {
 
 	/**
 	 * Constructor for evolution/training purposes
+	 * 
 	 * @param genes
 	 */
 	public Evaluate(double[] genes) {
 		this();
+		// strong = true;
 		double[][] blackPV = { kt1b, qt1b, rt1b, bt1b, nt1b, pt1b, kt2b, bt2b,
 				nt2b, pt2b };
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 64; j++) {
-				blackPV[i][j] = genes[(i*64) + j];
+				blackPV[i][j] = genes[(i * 64) + j];
 			}
 		}
 		for (int i = 0; i < 64; i++) {
@@ -266,31 +270,34 @@ public class Evaluate {
 	final public int evalPos(Position pos) {
 		int score = pos.wMtrl - pos.bMtrl;
 
-		wKingAttacks = bKingAttacks = 0;
-		wKingZone = BitBoard.kingAttacks[pos.getKingSq(true)];
-		wKingZone |= wKingZone << 8;
-		bKingZone = BitBoard.kingAttacks[pos.getKingSq(false)];
-		bKingZone |= bKingZone >>> 8;
-		wAttacksBB = bAttacksBB = 0L;
-
-		long pawns = pos.pieceTypeBB[Piece.WPAWN];
-		wPawnAttacks = ((pawns & BitBoard.maskBToHFiles) << 7)
-				| ((pawns & BitBoard.maskAToGFiles) << 9);
-		pawns = pos.pieceTypeBB[Piece.BPAWN];
-		bPawnAttacks = ((pawns & BitBoard.maskBToHFiles) >>> 9)
-				| ((pawns & BitBoard.maskAToGFiles) >>> 7);
-
+//		if (strong) {
+//			wKingAttacks = bKingAttacks = 0;
+//			wKingZone = BitBoard.kingAttacks[pos.getKingSq(true)];
+//			wKingZone |= wKingZone << 8;
+//			bKingZone = BitBoard.kingAttacks[pos.getKingSq(false)];
+//			bKingZone |= bKingZone >>> 8;
+//			wAttacksBB = bAttacksBB = 0L;
+//
+//			long pawns = pos.pieceTypeBB[Piece.WPAWN];
+//			wPawnAttacks = ((pawns & BitBoard.maskBToHFiles) << 7)
+//					| ((pawns & BitBoard.maskAToGFiles) << 9);
+//			pawns = pos.pieceTypeBB[Piece.BPAWN];
+//			bPawnAttacks = ((pawns & BitBoard.maskBToHFiles) >>> 9)
+//					| ((pawns & BitBoard.maskAToGFiles) >>> 7);
+//		}
+		
 		score += pieceSquareEval(pos);
-		// score += pawnBonus(pos);
-		// score += tradeBonus(pos);
-		// score += castleBonus(pos);
-
-		// score += rookBonus(pos);
-		// score += bishopEval(pos, score);
-		// score += threatBonus(pos);
-		// score += kingSafety(pos);
-		// score = endGameEval(pos, score);
-
+		
+//		if (strong) {
+//			score += pawnBonus(pos);
+//			score += tradeBonus(pos);
+//			score += castleBonus(pos);
+//			score += rookBonus(pos);
+//			score += bishopEval(pos, score);
+//			score += threatBonus(pos);
+//			score += kingSafety(pos);
+//			score = endGameEval(pos, score);
+//		}
 		if (!pos.whiteMove)
 			score = -score;
 		return score;

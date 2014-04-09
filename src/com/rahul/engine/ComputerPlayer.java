@@ -14,7 +14,7 @@
 
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ */
 
 package com.rahul.engine;
 
@@ -24,242 +24,262 @@ import java.util.Random;
 
 /**
  * A computer algorithm player.
+ * 
  * @author petero
  */
 public class ComputerPlayer implements Player {
-    public static final String engineName;
+	public static final String engineName;
 
-    static {
-        String name = "CuckooChess 1.13a9";
-        String m = System.getProperty("sun.arch.data.model");
-        if ("32".equals(m))
-            name += " 32-bit";
-        else if ("64".equals(m))
-            name += " 64-bit";
-        engineName = name;
-    }
+	static {
+		String name = "CuckooChess 1.13a9";
+		String m = System.getProperty("sun.arch.data.model");
+		if ("32".equals(m))
+			name += " 32-bit";
+		else if ("64".equals(m))
+			name += " 64-bit";
+		engineName = name;
+	}
 
-    int minTimeMillis;
-    int maxTimeMillis;
-    int maxDepth;
-    int maxNodes;
-    public boolean verbose;
-    TranspositionTable tt;
-    Book book;
-    boolean bookEnabled;
-    boolean randomMode;
-    Search currentSearch;
-    
-    // FOR EVOLUTION / TRAINING ONLY
-    double[] genes = null;
+	int minTimeMillis;
+	int maxTimeMillis;
+	int maxDepth;
+	int maxNodes;
+	public boolean verbose;
+	TranspositionTable tt;
+	Book book;
+	boolean bookEnabled;
+	boolean randomMode;
+	Search currentSearch;
 
-    /**
-     * Constructor; With or without logging
-     * @param verbose
-     */
-    public ComputerPlayer(boolean verbose) {
-        minTimeMillis = 10000;
-        maxTimeMillis = 10000;
-        this.verbose = verbose;
-        // SET DEPTH HERE!! (Default : 100)
-        maxDepth = 4;
-        
-        maxNodes = -1;
-        setTTLogSize(15);
-        book = new Book(verbose);
-        bookEnabled = true;
-        randomMode = false;
-    }
-    
-    /**
-     * Call this only during evolution/training
-     * @param verbose
-     * @param genes
-     */
-    public ComputerPlayer(boolean verbose, double[] genes) {
-    	this(verbose);
-    	this.genes = genes;
-    }
+	// FOR EVOLUTION / TRAINING ONLY
+	double[] genes = null;
 
-    public void setTTLogSize(int logSize) {
-        tt = new TranspositionTable(logSize);
-    }
-    
-    Search.Listener listener;
-    public void setListener(Search.Listener listener) {
-        this.listener = listener;
-    }
+	/**
+	 * Constructor; With or without logging
+	 * 
+	 * @param verbose
+	 */
+	public ComputerPlayer(boolean verbose) {
+		minTimeMillis = 10000;
+		maxTimeMillis = 10000;
+		this.verbose = verbose;
+		// SET DEPTH HERE!! (Default : 100)
+		maxDepth = 4;
 
-    @Override
-    public String getCommand(Position pos, boolean drawOffer, List<Position> history) {
-        // Create a search object
-        long[] posHashList = new long[200 + history.size()];
-        int posHashListSize = 0;
-        for (Position p : history) {
-            posHashList[posHashListSize++] = p.zobristHash();
-        }
-        tt.nextGeneration();
-        History ht = new History();
-        Search sc = new Search(pos, posHashList, posHashListSize, tt, ht, genes);
+		maxNodes = -1;
+		setTTLogSize(15);
+		book = new Book(verbose);
+		bookEnabled = true;
+		randomMode = false;
+	}
 
-        // Determine all legal moves
-        MoveGen.MoveList moves = new MoveGen().pseudoLegalMoves(pos);
-        MoveGen.removeIllegal(pos, moves);
-        sc.scoreMoveList(moves, 0);
+	/**
+	 * Call this only during evolution/training
+	 * 
+	 * @param verbose
+	 * @param genes
+	 */
+	public ComputerPlayer(boolean verbose, double[] genes) {
+		this(verbose);
+		this.genes = genes;
+	}
 
-        // Test for "game over"
-        if (moves.size == 0) {
-            // Switch sides so that the human can decide what to do next.
-            return "swap";
-        }
+	public void setTTLogSize(int logSize) {
+		tt = new TranspositionTable(logSize);
+	}
 
-        if (bookEnabled) {
-            Move bookMove = book.getBookMove(pos);
-            if (bookMove != null) {
-                if(verbose) System.out.printf("Book moves: %s\n", book.getAllBookMoves(pos));
-                return TextIO.moveToString(pos, bookMove, false);
-            }
-        }
-        
-        // Find best move using iterative deepening
-        currentSearch = sc;
-        sc.setListener(listener);
-        Move bestM;
-        if ((moves.size == 1) && (canClaimDraw(pos, posHashList, posHashListSize, moves.m[0]) == "")) {
-            bestM = moves.m[0];
-            bestM.score = 0;
-        } else if (randomMode) {
-            bestM = findSemiRandomMove(sc, moves);
-        } else {
-            sc.timeLimit(minTimeMillis, maxTimeMillis);
-            bestM = sc.iterativeDeepening(moves, maxDepth, maxNodes, verbose);
-        }
-        currentSearch = null;
-//        tt.printStats();
-        String strMove = TextIO.moveToString(pos, bestM, false);
+	Search.Listener listener;
 
-        // Claim draw if appropriate
-        if (bestM.score <= 0) {
-            String drawClaim = canClaimDraw(pos, posHashList, posHashListSize, bestM);
-            if (drawClaim != "")
-                strMove = drawClaim;
-        }
-        return strMove;
-    }
-    
-    /** Check if a draw claim is allowed, possibly after playing "move".
-     * @param move The move that may have to be made before claiming draw.
-     * @return The draw string that claims the draw, or empty string if draw claim not valid.
-     */
-    private String canClaimDraw(Position pos, long[] posHashList, int posHashListSize, Move move) {
-        String drawStr = "";
-        if (Search.canClaimDraw50(pos)) {
-            drawStr = "draw 50";
-        } else if (Search.canClaimDrawRep(pos, posHashList, posHashListSize, posHashListSize)) {
-            drawStr = "draw rep";
-        } else {
-            String strMove = TextIO.moveToString(pos, move, false);
-            posHashList[posHashListSize++] = pos.zobristHash();
-            UndoInfo ui = new UndoInfo();
-            pos.makeMove(move, ui);
-            if (Search.canClaimDraw50(pos)) {
-                drawStr = "draw 50 " + strMove;
-            } else if (Search.canClaimDrawRep(pos, posHashList, posHashListSize, posHashListSize)) {
-                drawStr = "draw rep " + strMove;
-            }
-            pos.unMakeMove(move, ui);
-        }
-        return drawStr;
-    }
+	public void setListener(Search.Listener listener) {
+		this.listener = listener;
+	}
 
-    @Override
-    public boolean isHumanPlayer() {
-        return false;
-    }
+	@Override
+	public String getCommand(Position pos, boolean drawOffer,
+			List<Position> history) {
+		// Create a search object
+		long[] posHashList = new long[200 + history.size()];
+		int posHashListSize = 0;
+		for (Position p : history) {
+			posHashList[posHashListSize++] = p.zobristHash();
+		}
+		tt.nextGeneration();
+		History ht = new History();
+		Search sc = new Search(pos, posHashList, posHashListSize, tt, ht, genes);
 
-    @Override
-    public void useBook(boolean bookOn) {
-        bookEnabled = bookOn;
-    }
+		// Determine all legal moves
+		MoveGen.MoveList moves = new MoveGen().pseudoLegalMoves(pos);
+		MoveGen.removeIllegal(pos, moves);
+		sc.scoreMoveList(moves, 0);
 
-    @Override
-    public void timeLimit(int minTimeLimit, int maxTimeLimit, boolean randomMode) {
-        if (randomMode) {
-            minTimeLimit = 0;
-            maxTimeLimit = 0;
-        }
-        minTimeMillis = minTimeLimit;
-        maxTimeMillis = maxTimeLimit;
-        this.randomMode = randomMode;
-        if (currentSearch != null) {
-            currentSearch.timeLimit(minTimeLimit, maxTimeLimit);
-        }
-    }
+		// Test for "game over"
+		if (moves.size == 0) {
+			// Switch sides so that the human can decide what to do next.
+			return "swap";
+		}
 
-    @Override
-    public void clearTT() {
-        tt.clear();
-    }
+		if (bookEnabled) {
+			Move bookMove = book.getBookMove(pos);
+			if (bookMove != null) {
+				if (verbose)
+					System.out.printf("Book moves: %s\n",
+							book.getAllBookMoves(pos));
+				return TextIO.moveToString(pos, bookMove, false);
+			}
+		}
 
-    /** Search a position and return the best move and score. Used for test suite processing. */
-    public TwoReturnValues<Move, String> searchPosition(Position pos, int maxTimeMillis) {
-        // Create a search object
-        long[] posHashList = new long[200];
-        tt.nextGeneration();
-        History ht = new History();
-        Search sc = new Search(pos, posHashList, 0, tt, ht);
-        
-        // Determine all legal moves
-        MoveGen.MoveList moves = new MoveGen().pseudoLegalMoves(pos);
-        MoveGen.removeIllegal(pos, moves);
-        sc.scoreMoveList(moves, 0);
+		// Find best move using iterative deepening
+		currentSearch = sc;
+		sc.setListener(listener);
+		Move bestM;
+		if ((moves.size == 1)
+				&& (canClaimDraw(pos, posHashList, posHashListSize, moves.m[0]) == "")) {
+			bestM = moves.m[0];
+			bestM.score = 0;
+		} else if (randomMode) {
+			bestM = findSemiRandomMove(sc, moves);
+		} else {
+			sc.timeLimit(minTimeMillis, maxTimeMillis);
+			bestM = sc.iterativeDeepening(moves, maxDepth, maxNodes, verbose);
+		}
+		currentSearch = null;
+		// tt.printStats();
+		String strMove = TextIO.moveToString(pos, bestM, false);
 
-        // Find best move using iterative deepening
-        sc.timeLimit(maxTimeMillis, maxTimeMillis);
-        Move bestM = sc.iterativeDeepening(moves, -1, -1, false);
+		// Claim draw if appropriate
+		if (bestM.score <= 0) {
+			String drawClaim = canClaimDraw(pos, posHashList, posHashListSize,
+					bestM);
+			if (drawClaim != "")
+				strMove = drawClaim;
+		}
+		return strMove;
+	}
 
-        // Extract PV
-        String PV = TextIO.moveToString(pos, bestM, false) + " ";
-        UndoInfo ui = new UndoInfo();
-        pos.makeMove(bestM, ui);
-        PV += tt.extractPV(pos);
-        pos.unMakeMove(bestM, ui);
+	/**
+	 * Check if a draw claim is allowed, possibly after playing "move".
+	 * 
+	 * @param move
+	 *            The move that may have to be made before claiming draw.
+	 * @return The draw string that claims the draw, or empty string if draw
+	 *         claim not valid.
+	 */
+	private String canClaimDraw(Position pos, long[] posHashList,
+			int posHashListSize, Move move) {
+		String drawStr = "";
+		if (Search.canClaimDraw50(pos)) {
+			drawStr = "draw 50";
+		} else if (Search.canClaimDrawRep(pos, posHashList, posHashListSize,
+				posHashListSize)) {
+			drawStr = "draw rep";
+		} else {
+			String strMove = TextIO.moveToString(pos, move, false);
+			posHashList[posHashListSize++] = pos.zobristHash();
+			UndoInfo ui = new UndoInfo();
+			pos.makeMove(move, ui);
+			if (Search.canClaimDraw50(pos)) {
+				drawStr = "draw 50 " + strMove;
+			} else if (Search.canClaimDrawRep(pos, posHashList,
+					posHashListSize, posHashListSize)) {
+				drawStr = "draw rep " + strMove;
+			}
+			pos.unMakeMove(move, ui);
+		}
+		return drawStr;
+	}
 
-//        tt.printStats();
+	@Override
+	public boolean isHumanPlayer() {
+		return false;
+	}
 
-        // Return best move and PV
-        return new TwoReturnValues<Move, String>(bestM, PV);
-    }
+	@Override
+	public void useBook(boolean bookOn) {
+		bookEnabled = bookOn;
+	}
 
-    private Move findSemiRandomMove(Search sc, MoveGen.MoveList moves) {
-        sc.timeLimit(minTimeMillis, maxTimeMillis);
-        Move bestM = sc.iterativeDeepening(moves, 1, maxNodes, verbose);
-        int bestScore = bestM.score;
+	@Override
+	public void timeLimit(int minTimeLimit, int maxTimeLimit, boolean randomMode) {
+		if (randomMode) {
+			minTimeLimit = 0;
+			maxTimeLimit = 0;
+		}
+		minTimeMillis = minTimeLimit;
+		maxTimeMillis = maxTimeLimit;
+		this.randomMode = randomMode;
+		if (currentSearch != null) {
+			currentSearch.timeLimit(minTimeLimit, maxTimeLimit);
+		}
+	}
 
-        Random rndGen = new SecureRandom();
-        rndGen.setSeed(System.currentTimeMillis());
+	@Override
+	public void clearTT() {
+		tt.clear();
+	}
 
-        int sum = 0;
-        for (int mi = 0; mi < moves.size; mi++) {
-            sum += moveProbWeight(moves.m[mi].score, bestScore);
-        }
-        int rnd = rndGen.nextInt(sum);
-        for (int mi = 0; mi < moves.size; mi++) {
-            int weight = moveProbWeight(moves.m[mi].score, bestScore);
-            if (rnd < weight) {
-                return moves.m[mi];
-            }
-            rnd -= weight;
-        }
-        assert(false);
-        return null;
-    }
+	/**
+	 * Search a position and return the best move and score. Used for test suite
+	 * processing.
+	 */
+	public TwoReturnValues<Move, String> searchPosition(Position pos,
+			int maxTimeMillis) {
+		// Create a search object
+		long[] posHashList = new long[200];
+		tt.nextGeneration();
+		History ht = new History();
+		Search sc = new Search(pos, posHashList, 0, tt, ht);
 
-    private final static int moveProbWeight(int moveScore, int bestScore) {
-        double d = (bestScore - moveScore) / 100.0;
-        double w = 100*Math.exp(-d*d/2);
-        return (int)Math.ceil(w);
-    }
+		// Determine all legal moves
+		MoveGen.MoveList moves = new MoveGen().pseudoLegalMoves(pos);
+		MoveGen.removeIllegal(pos, moves);
+		sc.scoreMoveList(moves, 0);
 
-    // FIXME!!! Test Botvinnik-Markoff extension
+		// Find best move using iterative deepening
+		sc.timeLimit(maxTimeMillis, maxTimeMillis);
+		Move bestM = sc.iterativeDeepening(moves, -1, -1, false);
+
+		// Extract PV
+		String PV = TextIO.moveToString(pos, bestM, false) + " ";
+		UndoInfo ui = new UndoInfo();
+		pos.makeMove(bestM, ui);
+		PV += tt.extractPV(pos);
+		pos.unMakeMove(bestM, ui);
+
+		// tt.printStats();
+
+		// Return best move and PV
+		return new TwoReturnValues<Move, String>(bestM, PV);
+	}
+
+	private Move findSemiRandomMove(Search sc, MoveGen.MoveList moves) {
+		sc.timeLimit(minTimeMillis, maxTimeMillis);
+		Move bestM = sc.iterativeDeepening(moves, 1, maxNodes, verbose);
+		int bestScore = bestM.score;
+
+		Random rndGen = new SecureRandom();
+		rndGen.setSeed(System.currentTimeMillis());
+
+		int sum = 0;
+		for (int mi = 0; mi < moves.size; mi++) {
+			sum += moveProbWeight(moves.m[mi].score, bestScore);
+		}
+		int rnd = rndGen.nextInt(sum);
+		for (int mi = 0; mi < moves.size; mi++) {
+			int weight = moveProbWeight(moves.m[mi].score, bestScore);
+			if (rnd < weight) {
+				return moves.m[mi];
+			}
+			rnd -= weight;
+		}
+		assert (false);
+		return null;
+	}
+
+	private final static int moveProbWeight(int moveScore, int bestScore) {
+		double d = (bestScore - moveScore) / 100.0;
+		double w = 100 * Math.exp(-d * d / 2);
+		return (int) Math.ceil(w);
+	}
+
+	// FIXME!!! Test Botvinnik-Markoff extension
 }

@@ -1,35 +1,35 @@
 package com.rahul.genetics;
 
-import jenes.tutorials.utils.Utils;
-import jenes.population.Individual;
-import jenes.population.Population;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import jenes.population.Population.Statistics;
-import jenes.population.Population.Statistics.Group;
+import jenes.tutorials.utils.Utils;
 
 public class GeneCrusher {
-	
-    private static final int POPULATION_SIZE = 20;
-    private static final int GENERATION_LIMIT = 100;
-    private static final int GENE_SIZE = 640;
-    
-    private PhoenixGA algorithm;
-    
-    public GeneCrusher() {
-    	algorithm = new PhoenixGA(POPULATION_SIZE, GENERATION_LIMIT, GENE_SIZE);
-    }
-    
-    public void run() {
-        this.algorithm.evolve();
-        
-        Statistics stat = algorithm.getCurrentPopulation().getStatistics();
-        Group legals = stat.getGroup(Population.LEGALS);
-        Individual solution = legals.get(0);
-        System.out.println(solution.getChromosome());
-        Utils.printStatistics(stat);
-    }
-    
+
+	private static final int POPULATION_SIZE = 20;
+	private static final int GENERATION_LIMIT = 1000;
+	private static final int GENE_SIZE = 640;
+
+	private PhoenixGA algorithm;
+
+	public GeneCrusher() {
+		algorithm = new PhoenixGA(POPULATION_SIZE, GENERATION_LIMIT, GENE_SIZE);
+	}
+
+	public void run() {
+		this.algorithm.evolve();
+
+		Statistics stat = algorithm.getCurrentPopulation().getStatistics();
+		Utils.printStatistics(stat);
+	}
+
 	public static void main(String[] args) {
-		System.out.println("GENE CRUSHER FOR THE PHOENIX");
+		String time = new SimpleDateFormat("yyyy-MM-dd-HH-mm").format(Calendar
+				.getInstance().getTime());
+		
+		System.out.println("GENE CRUSHER FOR THE PHOENIX - RunLog : " + time);
 		GeneCrusher geneCrusher = new GeneCrusher();
 		geneCrusher.run();
 	}
