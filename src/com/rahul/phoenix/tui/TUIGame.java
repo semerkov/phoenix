@@ -215,7 +215,8 @@ public class TUIGame extends Game {
 				System.out.printf("%s%n", stateStr);
 			}
 			if(quitCheck(getGameState())) {
-				if(verbose) System.out.println(finalResult);
+				// CHANGE HERE TO SEE SCORES
+				/*if(verbose)*/ System.out.println(finalResult);
 				return finalResult;
 			}
 
@@ -254,9 +255,7 @@ public class TUIGame extends Game {
 		case DRAW_AGREE:
 			finalResult = "0.5-0.5";
 			return true;
-
-
-
+			
 		default:
 			throw new RuntimeException();
 		}

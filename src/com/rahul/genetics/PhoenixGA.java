@@ -21,10 +21,7 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
 
 	/** This is a list of players who compete in the tournament */
 	private ArrayList<GeneticPlayer> players;
-
-	private static final int MAX_WEIGHT = 100;
-	private static final int MIN_WEIGHT = -100;
-	private static final int ELITES = 2;
+	private static final int ELITES = 0;
 
 	private class PhoenixFitness extends Fitness<DoubleChromosome> {
 		private PhoenixFitness(boolean maximize) {
@@ -39,19 +36,18 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
 
 	private PhoenixFitness maximize = new PhoenixFitness(true);
 
-	public PhoenixGA(int popsize, int generations, int chainLength) {
+	public PhoenixGA(int popsize, int generations, DoubleChromosome initialChromosome) {
 		super(new Population<DoubleChromosome>(
-				new Individual<DoubleChromosome>(new DoubleChromosome(
-						chainLength, MIN_WEIGHT, MAX_WEIGHT)), popsize),
-				generations);
+				new Individual<DoubleChromosome>(initialChromosome), popsize),
+						generations);
 
 		this.setFitness(this.maximize);
-		this.setElitism(ELITES);
-		this.setElitismStrategy(ElitismStrategy.WORST);
+		// this.setElitism(ELITES);
+		// this.setElitismStrategy(ElitismStrategy.WORST);
 
 		this.addStage(new TournamentSelector<DoubleChromosome>(2));
 		this.addStage(new OnePointCrossover<DoubleChromosome>(0.8));
-		this.addStage(new SimpleMutator<DoubleChromosome>(0.02));
+		this.addStage(new SimpleMutator<DoubleChromosome>(0.1));
 	}
 
 	@SuppressWarnings("deprecation")
