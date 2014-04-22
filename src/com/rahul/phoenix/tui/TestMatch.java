@@ -25,7 +25,7 @@ public class TestMatch {
 	public static String play() {
 		boolean verbose = false;
 
-		ComputerPlayer whitePlayer = new ComputerPlayer(verbose, Genes.testGenes3);
+		ComputerPlayer whitePlayer = new ComputerPlayer(verbose, Genes.mngenes3);
 		// ComputerPlayer blackPlayer = new ComputerPlayer(verbose);
 		ComputerPlayer blackPlayer = new ComputerPlayer(verbose, Genes.defaultGenes);
 		whitePlayer.setTTLogSize(10);

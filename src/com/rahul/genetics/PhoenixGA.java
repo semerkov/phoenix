@@ -6,48 +6,40 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-import jenes.GeneticAlgorithm;
+import jenes.algorithms.CrowdingGA;
 import jenes.chromosome.DoubleChromosome;
 import jenes.population.Fitness;
 import jenes.population.Individual;
 import jenes.population.Population;
+import jenes.stage.operator.common.MultiNicheCrowder;
 import jenes.stage.operator.common.OnePointCrossover;
 import jenes.stage.operator.common.SimpleMutator;
 import jenes.stage.operator.common.TournamentSelector;
 
 import com.rahul.phoenix.tui.TUIGame;
 
-public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
+public class PhoenixGA extends CrowdingGA<DoubleChromosome> {
 
 	/** This is a list of players who compete in the tournament */
 	private ArrayList<GeneticPlayer> players;
-	private static final int ELITES = 0;
+	private static final int ELITES = 2;
 
-	private class PhoenixFitness extends Fitness<DoubleChromosome> {
-		private PhoenixFitness(boolean maximize) {
-			super(maximize);
-		}
+	// private PhoenixFitness maximize = new PhoenixFitness(true);
 
-		@Override
-		public void evaluate(Individual<DoubleChromosome> individual) {
-			// Fitness values are already set during the Tournament
-		}
-	}
+	public PhoenixGA(int popsize, int generations,
+			DoubleChromosome initialChromosome) {
+		super(new PhoenixFitness(true), new MultiNicheCrowder(),
+				new Population<DoubleChromosome>(
+						new Individual<DoubleChromosome>(initialChromosome),
+						popsize), generations);
 
-	private PhoenixFitness maximize = new PhoenixFitness(true);
-
-	public PhoenixGA(int popsize, int generations, DoubleChromosome initialChromosome) {
-		super(new Population<DoubleChromosome>(
-				new Individual<DoubleChromosome>(initialChromosome), popsize),
-						generations);
-
-		this.setFitness(this.maximize);
+		// this.setFitness(this.maximize);
 		// this.setElitism(ELITES);
 		// this.setElitismStrategy(ElitismStrategy.WORST);
 
 		this.addStage(new TournamentSelector<DoubleChromosome>(2));
 		this.addStage(new OnePointCrossover<DoubleChromosome>(0.8));
-		this.addStage(new SimpleMutator<DoubleChromosome>(0.1));
+		this.addStage(new SimpleMutator<DoubleChromosome>(0.02));
 	}
 
 	@SuppressWarnings("deprecation")
@@ -91,7 +83,7 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
 	@Override
 	protected void onGeneration(long time) {
 		super.onGeneration(time);
-		
+
 		playTournament();
 		double[] wins = new double[players.size()];
 		for (int i = 0; i < players.size(); i++) {
@@ -124,5 +116,16 @@ public class PhoenixGA extends GeneticAlgorithm<DoubleChromosome> {
 			System.exit(-1);
 		}
 		return 0.0;
+	}
+}
+
+class PhoenixFitness extends Fitness<DoubleChromosome> {
+	PhoenixFitness(boolean maximize) {
+		super(maximize);
+	}
+
+	@Override
+	public void evaluate(Individual<DoubleChromosome> individual) {
+		// Fitness values are already set during the Tournament
 	}
 }
