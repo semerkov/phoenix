@@ -22,10 +22,10 @@ public class TestMatch {
 		return new double[640];
 	}
 
-	public static String play() {
+	public static String play(double[] genes) {
 		boolean verbose = false;
 
-		ComputerPlayer whitePlayer = new ComputerPlayer(verbose, Genes.mngenes3);
+		ComputerPlayer whitePlayer = new ComputerPlayer(verbose, genes);
 		// ComputerPlayer blackPlayer = new ComputerPlayer(verbose);
 		ComputerPlayer blackPlayer = new ComputerPlayer(verbose, Genes.defaultGenes);
 		whitePlayer.setTTLogSize(10);
