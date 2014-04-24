@@ -9,7 +9,7 @@ import jenes.tutorials.utils.Utils;
 
 public class GeneCrusher {
 
-	private static final int POPULATION_SIZE = 20;
+	private static final int POPULATION_SIZE = 40;
 	private static final int GENERATION_LIMIT = 1000;
 	private static final int GENE_SIZE = 640;
 	private static final int MAX_WEIGHT = 48;
