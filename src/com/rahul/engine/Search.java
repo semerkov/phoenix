@@ -121,8 +121,10 @@ public class Search {
 		this(pos, posHashList, posHashListSize, tt, ht);
 		if (genes == null)
 			eval = new Evaluate();
+		else if(genes.length == 640)
+			eval = new Evaluate(genes, false);
 		else
-			eval = new Evaluate(genes);
+			eval = new Evaluate(genes, true);
 	}
 
 	static final class StopSearch extends Exception {

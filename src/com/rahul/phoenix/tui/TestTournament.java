@@ -19,7 +19,7 @@ public class TestTournament {
 	}
 	
 	private static void play(double[] genes) {
-		int numOfMatches = 1000;
+		int numOfMatches = 100;
 		double whiteScore = 0;
 		
 		for (int i = 0; i < numOfMatches; i++)
@@ -32,6 +32,6 @@ public class TestTournament {
 
 	public static void main(String[] args) {
 		// playAll();
-		play(Genes.mngenes4);
+		play(Genes.gnGenes1);
 	}
 }

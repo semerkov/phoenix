@@ -22,10 +22,11 @@ public class PhoenixGA extends CrowdingGA<DoubleChromosome> {
 
 	/** This is a list of players who compete in the tournament */
 	private ArrayList<GeneticPlayer> players;
-	private static final int ELITES = 2;
+	private static final int ELITES = 1;
 
 	// private PhoenixFitness maximize = new PhoenixFitness(true);
 
+	@SuppressWarnings("rawtypes")
 	public PhoenixGA(int popsize, int generations,
 			DoubleChromosome initialChromosome) {
 		super(new PhoenixFitness(true), new MultiNicheCrowder(),
@@ -33,9 +34,8 @@ public class PhoenixGA extends CrowdingGA<DoubleChromosome> {
 						new Individual<DoubleChromosome>(initialChromosome),
 						popsize), generations);
 
-		// this.setFitness(this.maximize);
-		// this.setElitism(ELITES);
-		// this.setElitismStrategy(ElitismStrategy.WORST);
+		this.setElitism(ELITES);
+		this.setElitismStrategy(ElitismStrategy.WORST);
 
 		this.addStage(new TournamentSelector<DoubleChromosome>(2));
 		this.addStage(new OnePointCrossover<DoubleChromosome>(0.8));
