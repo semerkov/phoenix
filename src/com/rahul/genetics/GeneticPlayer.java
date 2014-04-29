@@ -6,6 +6,7 @@ public class GeneticPlayer {
 	private int numOfGames;
 	private double numOfWins;
 	private double[] genes;
+	private boolean isTraining = false;
 	
 	private ComputerPlayer player;
 
@@ -16,7 +17,7 @@ public class GeneticPlayer {
 		numOfWins = 0;
 		
 		this.genes = genes;
-		player = new ComputerPlayer(false, genes);
+		player = new ComputerPlayer(false, genes, isTraining);
 		player.setTTLogSize(LOG_SIZE);
 	}
 

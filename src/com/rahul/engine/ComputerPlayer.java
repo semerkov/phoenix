@@ -53,6 +53,7 @@ public class ComputerPlayer implements Player {
 
 	// FOR EVOLUTION / TRAINING ONLY
 	double[] genes = null;
+	boolean isTraining;
 
 	/**
 	 * Constructor; With or without logging
@@ -79,9 +80,10 @@ public class ComputerPlayer implements Player {
 	 * @param verbose
 	 * @param genes
 	 */
-	public ComputerPlayer(boolean verbose, double[] genes) {
+	public ComputerPlayer(boolean verbose, double[] genes, boolean isTraining) {
 		this(verbose);
 		this.genes = genes;
+		this.isTraining = isTraining;
 	}
 
 	public void setTTLogSize(int logSize) {
@@ -105,7 +107,7 @@ public class ComputerPlayer implements Player {
 		}
 		tt.nextGeneration();
 		History ht = new History();
-		Search sc = new Search(pos, posHashList, posHashListSize, tt, ht, genes);
+		Search sc = new Search(pos, posHashList, posHashListSize, tt, ht, genes, isTraining);
 
 		// Determine all legal moves
 		MoveGen.MoveList moves = new MoveGen().pseudoLegalMoves(pos);

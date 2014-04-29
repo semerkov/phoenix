@@ -1,35 +1,36 @@
 package com.rahul.nn;
 
 import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 
+import org.neuroph.core.NeuralNetwork;
+import org.neuroph.core.data.DataSet;
+import org.neuroph.core.data.DataSetRow;
+import org.neuroph.core.events.LearningEvent;
+import org.neuroph.core.events.LearningEventListener;
 import org.neuroph.nnet.MultiLayerPerceptron;
+import org.neuroph.nnet.learning.MomentumBackpropagation;
 import org.neuroph.util.TransferFunctionType;
 
-public class Network {
+public class Network implements LearningEventListener {
 	private MultiLayerPerceptron mlp;
+	private MomentumBackpropagation mbp;
 
 	private static final double highInputLimit = 4;
 	private static final double lowInputLimit = -4;
-	private static final double highWeightLimit = 10;
-	private static final double lowWeightLimit = -10;
+	private static final int maxIterations = 1000;
+	private static final double learningRate = 0.05;
+	private static final double momentum = 0.5;
 
 	public Network() {
 		mlp = new MultiLayerPerceptron(TransferFunctionType.SIGMOID, 16, 10, 1);
-	}
-
-	public void setWeights(double[] weights) {
-		mlp.setWeights(normalize(weights, lowWeightLimit, highWeightLimit));
-	}
-
-	public void negateWeights() {
-		Double[] weights = mlp.getWeights();
-		double[] negatedWeights = new double[weights.length];
-		for (int i = 0; i < weights.length; i++) {
-			negatedWeights[i] = -weights[i];
-		}
-		mlp.setWeights(negatedWeights);
+		mbp = new MomentumBackpropagation();
+		mlp.setLearningRule(mbp);
+		mbp.addListener(this);
+		mbp.setBatchMode(true);
+		mbp.setLearningRate(learningRate);
+		mbp.setMomentum(momentum);
+		mbp.setMaxIterations(maxIterations);
+		mbp.setMinErrorChange(0.000001);
 	}
 
 	public double propogate(double[] input) {
@@ -51,7 +52,23 @@ public class Network {
 		return normalizedInput;
 	}
 
-	public static void main(String[] args) {
-		new Network();
+	public void train(DataSet dataSet) {
+		System.out.println("Learning from " + dataSet.size() + " rows");
+		dataSet.normalize();
+		mlp.learn(dataSet);
+	}
+
+	public void save(String filePath) {
+		mlp.save(filePath);
+	}
+
+	@SuppressWarnings({ "deprecation" })
+	public void load(String filePath) {
+		mlp = (MultiLayerPerceptron) NeuralNetwork.load(filePath);
+	}
+
+	public void handleLearningEvent(LearningEvent event) {
+		System.out.println("Iteration " + mbp.getCurrentIteration() + " : "
+				+ mbp.getTotalNetworkError());
 	}
 }

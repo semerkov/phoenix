@@ -117,14 +117,12 @@ public class Search {
 	}
 
 	public Search(Position pos, long[] posHashList, int posHashListSize,
-			TranspositionTable tt, History ht, double[] genes) {
+			TranspositionTable tt, History ht, double[] genes, boolean isTraining) {
 		this(pos, posHashList, posHashListSize, tt, ht);
 		if (genes == null)
 			eval = new Evaluate();
-		else if(genes.length == 640)
-			eval = new Evaluate(genes, false);
-		else
-			eval = new Evaluate(genes, true);
+		else 
+			eval = new Evaluate(genes, isTraining);
 	}
 
 	static final class StopSearch extends Exception {

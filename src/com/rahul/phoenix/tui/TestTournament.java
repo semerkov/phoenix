@@ -4,6 +4,7 @@ import com.rahul.genetics.Genes;
 
 public class TestTournament {
 	
+	@SuppressWarnings("unused")
 	private static void playAll() {
 		int numOfMatches = 1000;
 
@@ -32,6 +33,6 @@ public class TestTournament {
 
 	public static void main(String[] args) {
 		// playAll();
-		play(Genes.gnGenes1);
+		play(Genes.gnGenes2);
 	}
 }

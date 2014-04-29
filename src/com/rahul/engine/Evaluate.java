@@ -24,6 +24,7 @@ import java.util.Arrays;
 
 import com.rahul.genetics.Genes;
 import com.rahul.nn.Network;
+import com.rahul.nn.NetworkUtils;
 
 /**
  * Position evaluation routines.
@@ -47,9 +48,7 @@ public class Evaluate {
 			nt2b, pt2b;
 
 	// Evolutionary part
-	private double[] genes;
-	private Network n1, n2, n3;
-	private boolean negated, isGN = false;
+	private boolean isTraining;
 
 	static {
 		// initialize all PVTs
@@ -179,7 +178,6 @@ public class Evaluate {
 			kpkTable = readTable("/kpk.bitbase", 2 * 32 * 64 * 48 / 8);
 		if (krkpTable == null)
 			krkpTable = readTable("/krkp.winmasks", 2 * 32 * 48 * 8);
-		negated = false;
 	}
 
 	/**
@@ -187,16 +185,9 @@ public class Evaluate {
 	 * 
 	 * @param genes
 	 */
-	public Evaluate(double[] genes, boolean isGN) {
+	public Evaluate(double[] genes, boolean isTraining) {
 		this();
-		this.genes = genes;
-		this.isGN = isGN;
-
-		n1 = new Network();
-		n2 = new Network();
-		n3 = new Network();
-
-		if(isGN) setWeightsForNN();
+		this.isTraining = isTraining;
 
 		// strong = true;
 		double[][] blackPV = { kt1b, qt1b, rt1b, bt1b, nt1b, pt1b, kt2b, bt2b,
@@ -218,12 +209,6 @@ public class Evaluate {
 			nt2w[i] = nt2b[63 - i];
 			pt2w[i] = pt2b[63 - i];
 		}
-	}
-
-	private void setWeightsForNN() {
-		n1.setWeights(Arrays.copyOfRange(genes, 640, 640 + 181));
-		n2.setWeights(Arrays.copyOfRange(genes, 640 + 181, 640 + 181 + 181));
-		n3.setWeights(Arrays.copyOfRange(genes, 640 + 181 + 181, genes.length));
 	}
 
 	private byte[] readTable(String resource, int length) {
@@ -253,11 +238,6 @@ public class Evaluate {
 	 *         good for the side to make the next move.
 	 */
 	final public int evalPos(Position pos) {
-		if (!negated && isGN && !pos.whiteMove) {
-			negateWeights();
-			negated = true;
-		}
-
 		int score = pos.wMtrl - pos.bMtrl;
 
 		// if (strong) {
@@ -276,11 +256,12 @@ public class Evaluate {
 		// | ((pawns & BitBoard.maskAToGFiles) >>> 7);
 		// }
 
-		if (isGN) {
-			score += pieceSquareEval(pos) + getNeuralOutputs(pos);
+		if (isTraining) {
+			score += pieceSquareEval(pos);
+			saveData(pos, score);
 
 		} else
-			score += pieceSquareEval(pos);
+			score += pieceSquareEval(pos) + getNeuralOutputs(pos);
 
 		// if (strong) {
 		// score += pawnBonus(pos);
@@ -295,6 +276,29 @@ public class Evaluate {
 		if (!pos.whiteMove)
 			score = -score;
 		return score;
+	}
+
+	private void saveData(Position pos, int score) {
+		double[] front = new double[16];
+		double[] middle = new double[16];
+		double[] back = new double[16];
+		double[] output = { score };
+		int counter = 0, index = 0;
+		for (int i = 0; i < 16; i++)
+			front[i] = pieceValue[pos.getPiece(i)];
+		for (int i = 18; i < 48; i++) {
+			middle[index++] = pieceValue[pos.getPiece(i)];
+			counter++;
+			if (counter % 4 == 0)
+				i += 5;
+		}
+		index = 0;
+		for (int i = 48; i < 64; i++)
+			back[index++] = pieceValue[pos.getPiece(i)];
+
+		NetworkUtils.dataSetFront.addRow(front, output);
+		NetworkUtils.dataSetMiddle.addRow(middle, output);
+		NetworkUtils.dataSetBack.addRow(back, output);
 	}
 
 	private double getNeuralOutputs(Position pos) {
@@ -314,13 +318,9 @@ public class Evaluate {
 		for (int i = 48; i < 64; i++)
 			back[index++] = pieceValue[pos.getPiece(i)];
 
-		return n1.propogate(front) + n2.propogate(middle) + n3.propogate(back);
-	}
-
-	private void negateWeights() {
-		n1.negateWeights();
-		n2.negateWeights();
-		n3.negateWeights();
+		return NetworkUtils.frontNetwork.propogate(front)
+				+ NetworkUtils.middleNetwork.propogate(middle)
+				+ NetworkUtils.backNetwork.propogate(back);
 	}
 
 	/** Compute white_material - black_material. */

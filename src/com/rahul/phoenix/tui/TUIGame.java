@@ -216,7 +216,7 @@ public class TUIGame extends Game {
 			}
 			if(quitCheck(getGameState())) {
 				// CHANGE HERE TO SEE SCORES
-				if(verbose) System.out.println(finalResult);
+				/*if(verbose)*/ System.out.println(finalResult);
 				return finalResult;
 			}
 
