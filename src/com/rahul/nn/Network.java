@@ -17,7 +17,7 @@ public class Network implements LearningEventListener {
 
 	private static final double highInputLimit = 4;
 	private static final double lowInputLimit = -4;
-	private static final int maxIterations = 1000;
+	private static final int maxIterations = 20;
 	private static final double learningRate = 0.05;
 	private static final double momentum = 0.5;
 

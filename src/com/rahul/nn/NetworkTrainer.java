@@ -27,13 +27,11 @@ public class NetworkTrainer {
 	}
 
 	private static void playTournament(double[] genes, boolean isTraining) {
-		int numOfMatches = 1000;
+		int numOfMatches = 10;
 		double whiteScore = 0;
-		
-		if(!isTraining) {
-			NetworkUtils.initNetworks();
-			NetworkUtils.loadNetworks();
-		}
+
+		NetworkUtils.initNetworks();
+		NetworkUtils.loadNetworks();
 
 		for (int i = 0; i < numOfMatches; i++)
 			whiteScore += Double.parseDouble(playMatch(genes, isTraining)
@@ -43,7 +41,6 @@ public class NetworkTrainer {
 
 		if (isTraining) {
 			System.out.println("Starting network training...");
-			NetworkUtils.initNetworks();
 			NetworkUtils.trainNetworks();
 			System.out.println("Finished network training. Saving networks...");
 			NetworkUtils.saveNetworks();

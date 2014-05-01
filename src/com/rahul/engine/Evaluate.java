@@ -261,7 +261,7 @@ public class Evaluate {
 			saveData(pos, score);
 
 		} else
-			score += pieceSquareEval(pos) + getNeuralOutputs(pos);
+			score += pieceSquareEval(pos) /*+ getNeuralOutputs(pos)*/;
 
 		// if (strong) {
 		// score += pawnBonus(pos);

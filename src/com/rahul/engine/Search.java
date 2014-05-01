@@ -95,7 +95,7 @@ public class Search {
 	int q0Eval; // Static eval score at first level of quiescence search
 
 	public Search(Position pos, long[] posHashList, int posHashListSize,
-			TranspositionTable tt, History ht) {
+			TranspositionTable tt, History ht, double[] genes, boolean isTraining) {
 		this.pos = new Position(pos);
 		this.moveGen = new MoveGen();
 		this.posHashList = posHashList;
@@ -114,11 +114,6 @@ public class Search {
 		for (int i = 0; i < vecLen; i++) {
 			searchTreeInfo[i] = new SearchTreeInfo();
 		}
-	}
-
-	public Search(Position pos, long[] posHashList, int posHashListSize,
-			TranspositionTable tt, History ht, double[] genes, boolean isTraining) {
-		this(pos, posHashList, posHashListSize, tt, ht);
 		if (genes == null)
 			eval = new Evaluate();
 		else 

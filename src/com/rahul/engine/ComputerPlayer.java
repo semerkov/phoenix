@@ -22,6 +22,8 @@ import java.security.SecureRandom;
 import java.util.List;
 import java.util.Random;
 
+import com.rahul.genetics.Genes;
+
 /**
  * A computer algorithm player.
  * 
@@ -65,7 +67,7 @@ public class ComputerPlayer implements Player {
 		maxTimeMillis = 10000;
 		this.verbose = verbose;
 		// SET DEPTH HERE!! (Default : 100)
-		maxDepth = 4;
+		maxDepth = 100;
 
 		maxNodes = -1;
 		setTTLogSize(15);
@@ -229,7 +231,9 @@ public class ComputerPlayer implements Player {
 		long[] posHashList = new long[200];
 		tt.nextGeneration();
 		History ht = new History();
-		Search sc = new Search(pos, posHashList, 0, tt, ht);
+		
+		// CHANGED HERE TO ENABLE AUTOPLAY BETWEEN ENGINES
+		Search sc = new Search(pos, posHashList, 0, tt, ht, Genes.mngenes4, false);
 
 		// Determine all legal moves
 		MoveGen.MoveList moves = new MoveGen().pseudoLegalMoves(pos);

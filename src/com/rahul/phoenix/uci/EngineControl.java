@@ -41,6 +41,7 @@ import com.rahul.engine.TextIO;
 import com.rahul.engine.TranspositionTable;
 import com.rahul.engine.TranspositionTable.TTEntry;
 import com.rahul.engine.UndoInfo;
+import com.rahul.genetics.Genes;
 
 /**
  * Control the search thread.
@@ -227,7 +228,9 @@ public class EngineControl {
     final private void startThread(final int minTimeLimit, final int maxTimeLimit,
                                    int maxDepth, final int maxNodes) {
         synchronized (threadMutex) {} // Must not start new search until old search is finished
-        sc = new Search(pos, posHashList, posHashListSize, tt, ht);
+        
+        // CHANGED HERE TO ENABLE AUTOPLAY BETWEEN ENGINES
+        sc = new Search(pos, posHashList, posHashListSize, tt, ht, Genes.mngenes4, false);
         sc.timeLimit(minTimeLimit, maxTimeLimit);
         sc.setListener(new SearchListener(os));
         sc.setStrength(strength, randomSeed);
