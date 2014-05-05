@@ -25,11 +25,11 @@ import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.util.ArrayList;
 
-import com.rahul.engine.ChessParseError;
-import com.rahul.engine.ComputerPlayer;
-import com.rahul.engine.Move;
-import com.rahul.engine.Position;
-import com.rahul.engine.TextIO;
+import com.rahul.phoenix.engine.ChessParseError;
+import com.rahul.phoenix.engine.ComputerPlayer;
+import com.rahul.phoenix.engine.Move;
+import com.rahul.phoenix.engine.Position;
+import com.rahul.phoenix.engine.TextIO;
 
 /**
  * Handle the UCI protocol mode.

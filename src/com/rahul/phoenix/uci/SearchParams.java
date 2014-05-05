@@ -21,7 +21,7 @@ package com.rahul.phoenix.uci;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.rahul.engine.Move;
+import com.rahul.phoenix.engine.Move;
 
 /**
  * Store search parameters (times, increments, max depth, etc).

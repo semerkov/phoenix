@@ -21,11 +21,11 @@ package com.rahul.phoenix.gui;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import com.rahul.engine.ComputerPlayer;
-import com.rahul.engine.Move;
-import com.rahul.engine.Position;
-import com.rahul.guibase.ChessController;
-import com.rahul.guibase.GUIInterface;
+import com.rahul.phoenix.engine.ComputerPlayer;
+import com.rahul.phoenix.engine.Move;
+import com.rahul.phoenix.engine.Position;
+import com.rahul.phoenix.guibase.ChessController;
+import com.rahul.phoenix.guibase.GUIInterface;
 
 /**
  * The main class for the chess GUI.

@@ -2,11 +2,13 @@ package com.rahul.phoenix.tui;
 
 import java.io.IOException;
 
-import com.rahul.engine.ComputerPlayer;
-import com.rahul.genetics.Genes;
+import com.rahul.phoenix.engine.ComputerPlayer;
+import com.rahul.phoenix.genetics.Genes;
 
 public class TestMatch {
 
+	static String pgn = null;
+	
 	public static String play(double[] genes) {
 		boolean verbose = false;
 
@@ -16,7 +18,10 @@ public class TestMatch {
 		blackPlayer.setTTLogSize(10);
 		TUIGame game = new TUIGame(whitePlayer, blackPlayer);
 		try {
-			return game.play(verbose);
+			String result;
+			result = game.play(verbose);
+			pgn = game.getMoveListString(true);
+			return result;
 		} catch (IOException e) {
 			e.printStackTrace();
 			return null;

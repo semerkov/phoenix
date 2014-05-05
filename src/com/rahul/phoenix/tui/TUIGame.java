@@ -23,15 +23,15 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
 
-import com.rahul.engine.ChessParseError;
-import com.rahul.engine.ComputerPlayer;
-import com.rahul.engine.Evaluate;
-import com.rahul.engine.Game;
-import com.rahul.engine.Move;
-import com.rahul.engine.Player;
-import com.rahul.engine.Position;
-import com.rahul.engine.TextIO;
-import com.rahul.engine.TwoReturnValues;
+import com.rahul.phoenix.engine.ChessParseError;
+import com.rahul.phoenix.engine.ComputerPlayer;
+import com.rahul.phoenix.engine.Evaluate;
+import com.rahul.phoenix.engine.Game;
+import com.rahul.phoenix.engine.Move;
+import com.rahul.phoenix.engine.Player;
+import com.rahul.phoenix.engine.Position;
+import com.rahul.phoenix.engine.TextIO;
+import com.rahul.phoenix.engine.TwoReturnValues;
 import com.rahul.phoenix.uci.UCIProtocol;
 
 public class TUIGame extends Game {
@@ -216,7 +216,7 @@ public class TUIGame extends Game {
 			}
 			if(quitCheck(getGameState())) {
 				// CHANGE HERE TO SEE SCORES
-				/*if(verbose)*/ System.out.println(finalResult);
+				if(verbose) System.out.println(finalResult);
 				return finalResult;
 			}
 

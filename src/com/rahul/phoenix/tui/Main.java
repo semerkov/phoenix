@@ -20,10 +20,10 @@ package com.rahul.phoenix.tui;
 
 import java.io.IOException;
 
-import com.rahul.engine.ComputerPlayer;
-import com.rahul.engine.HumanPlayer;
-import com.rahul.engine.Player;
-import com.rahul.engine.TreeLogger;
+import com.rahul.phoenix.engine.ComputerPlayer;
+import com.rahul.phoenix.engine.HumanPlayer;
+import com.rahul.phoenix.engine.Player;
+import com.rahul.phoenix.engine.TreeLogger;
 
 /**
  *

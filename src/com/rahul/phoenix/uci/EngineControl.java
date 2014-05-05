@@ -23,25 +23,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.rahul.engine.Book;
-import com.rahul.engine.ComputerPlayer;
-import com.rahul.engine.History;
-import com.rahul.engine.Move;
-import com.rahul.engine.MoveGen;
-import com.rahul.engine.Parameters;
-import com.rahul.engine.Parameters.CheckParam;
-import com.rahul.engine.Parameters.ComboParam;
-import com.rahul.engine.Parameters.ParamBase;
-import com.rahul.engine.Parameters.SpinParam;
-import com.rahul.engine.Parameters.StringParam;
-import com.rahul.engine.Piece;
-import com.rahul.engine.Position;
-import com.rahul.engine.Search;
-import com.rahul.engine.TextIO;
-import com.rahul.engine.TranspositionTable;
-import com.rahul.engine.TranspositionTable.TTEntry;
-import com.rahul.engine.UndoInfo;
-import com.rahul.genetics.Genes;
+import com.rahul.phoenix.engine.Book;
+import com.rahul.phoenix.engine.ComputerPlayer;
+import com.rahul.phoenix.engine.History;
+import com.rahul.phoenix.engine.Move;
+import com.rahul.phoenix.engine.MoveGen;
+import com.rahul.phoenix.engine.Parameters;
+import com.rahul.phoenix.engine.Piece;
+import com.rahul.phoenix.engine.Position;
+import com.rahul.phoenix.engine.Search;
+import com.rahul.phoenix.engine.TextIO;
+import com.rahul.phoenix.engine.TranspositionTable;
+import com.rahul.phoenix.engine.UndoInfo;
+import com.rahul.phoenix.engine.Parameters.CheckParam;
+import com.rahul.phoenix.engine.Parameters.ComboParam;
+import com.rahul.phoenix.engine.Parameters.ParamBase;
+import com.rahul.phoenix.engine.Parameters.SpinParam;
+import com.rahul.phoenix.engine.Parameters.StringParam;
+import com.rahul.phoenix.engine.TranspositionTable.TTEntry;
+import com.rahul.phoenix.genetics.Genes;
 
 /**
  * Control the search thread.

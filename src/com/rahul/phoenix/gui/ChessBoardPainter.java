@@ -33,9 +33,9 @@ import java.io.InputStream;
 
 import javax.swing.JLabel;
 
-import com.rahul.engine.Move;
-import com.rahul.engine.Piece;
-import com.rahul.engine.Position;
+import com.rahul.phoenix.engine.Move;
+import com.rahul.phoenix.engine.Piece;
+import com.rahul.phoenix.engine.Position;
 
 /**
  * Draws a graphical chess board. Also handles user interaction.
