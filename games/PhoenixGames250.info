@@ -1,0 +1,15 @@
+Games        :    250 (finished)
+
+White Wins   :    105 (42.0 %)
+Black Wins   :     87 (34.8 %)
+Draws        :     58 (23.2 %)
+Unfinished   :      0
+
+White Perf.  : 53.6 %
+Black Perf.  : 46.4 %
+
+Original ELO : 2530
+
+Program                         Elo    +   -   Games   Score   Av.Op.  Draws
+1 mgGenes4                    : 2543   38  38   250    53.6 %   2517   23.2 %
+2 defaultGenes                : 2517   38  38   250    46.4 %   2543   23.2 %
