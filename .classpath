@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/JenesLib"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/NeurophCore"/>
+	<classpathentry kind="lib" path="lib/JenesLib.jar"/>
+	<classpathentry kind="lib" path="lib/neuroph-core.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

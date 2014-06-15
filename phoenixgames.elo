@@ -1,0 +1,53 @@
+-----------------------------Rating.dat:-----------------------------
+
+08-Jun-14 10:51:50 PM :
+
+    Program                          Elo    +   -   Games   Score   Av.Op.  Draws
+
+  1 mgGenes4                       : 2546   19  19  1000    54.7 %   2514   25.0 %
+  2 defaultGenes                   : 2514   19  19  1000    45.3 %   2546   25.0 %
+
+
+----------------------------Programs.dat:----------------------------
+Individual statistics:
+
+1 mgGenes4                  : 2546  1000 (+422,=250,-328), 54.7 %
+
+defaultGenes                  : 1000 (+422,=250,-328), 54.7 %
+
+2 defaultGenes              : 2514  1000 (+328,=250,-422), 45.3 %
+
+mgGenes4                      : 1000 (+328,=250,-422), 45.3 %
+
+
+----------------------------General.dat:-----------------------------
+
+Games        :   1000 (finished)
+
+White Wins   :    422 (42.2 %)
+Black Wins   :    328 (32.8 %)
+Draws        :    250 (25.0 %)
+Unfinished   :      0
+
+White Perf.  : 54.7 %
+Black Perf.  : 45.3 %
+
+ECO A =      0 Games ( 0.0 %)
+ECO B =      0 Games ( 0.0 %)
+ECO C =      0 Games ( 0.0 %)
+ECO D =      0 Games ( 0.0 %)
+ECO E =      0 Games ( 0.0 %)
+
+
+----------------------------Cluster.dat:-----------------------------
+Cluster No. 1:
+
+mgGenes4                       (1)
+defaultGenes                   (1)
+
+2 programs, 1000 games
+
+itoffset = 0.000000
+
+
+

@@ -20,13 +20,13 @@ public class TestTournament {
 	}
 
 	private static void play(double[] genes) {
-		int numOfMatches = 2;
+		int numOfMatches = 1;
 		double whiteScore = 0;
 		long start = System.currentTimeMillis();
 
 		String header = "[Event \"Training Tournament\"]\n"
 				+ "[White \"mgGenes4\"]\n" + "[Black \"defaultGenes\"]\n"
-				+ "[Date \"2014.05.04\"]\n" + "[TimeControl \"5|0\"]\n"
+				+ "[Date \"2014.06.05\"]\n" + "[TimeControl \"5|0\"]\n"
 				+ "[Result \"";
 		String tail = "\"]\n";
 
