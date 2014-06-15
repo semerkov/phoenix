@@ -1,0 +1,21 @@
+Games        :   1000 (finished)
+
+White Wins   :    422 (42.2 %)
+Black Wins   :    328 (32.8 %)
+Draws        :    250 (25.0 %)
+Unfinished   :      0
+
+White Perf.  : 54.7 %
+Black Perf.  : 45.3 %
+
+Original ELO : 2530
+
+Program                          Elo    +   -   Games   Score   Av.Op.  Draws
+1 Phoenix                      : 2546   19  19  1000    54.7 %   2514   25.0 %
+2 CuckooChess                  : 2514   19  19  1000    45.3 %   2546   25.0 %
+
+
+
+
+
+
