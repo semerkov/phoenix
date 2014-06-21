@@ -1,0 +1,1541 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN"
+            "http://www.w3.org/TR/REC-html40/loose.dtd">
+<HTML>
+<HEAD>
+<TITLE>main</TITLE>
+
+<META http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<META name="GENERATOR" content="hevea 1.10">
+<STYLE type="text/css">
+.li-itemize{margin:1ex 0ex;}
+.li-enumerate{margin:1ex 0ex;}
+.dd-description{margin:0ex 0ex 1ex 4ex;}
+.dt-description{margin:0ex;}
+.toc{list-style:none;}
+.thefootnotes{text-align:left;margin:0ex;}
+.dt-thefootnotes{margin:0em;}
+.dd-thefootnotes{margin:0em 0em 0em 2em;}
+.footnoterule{margin:1em auto 1em 0px;width:50%;}
+.caption{padding-left:2ex; padding-right:2ex; margin-left:auto; margin-right:auto}
+.title{margin:2ex auto;text-align:center}
+.center{text-align:center;margin-left:auto;margin-right:auto;}
+.flushleft{text-align:left;margin-left:0ex;margin-right:auto;}
+.flushright{text-align:right;margin-left:auto;margin-right:0ex;}
+DIV TABLE{margin-left:inherit;margin-right:inherit;}
+PRE{text-align:left;margin-left:0ex;margin-right:auto;}
+BLOCKQUOTE{margin-left:4ex;margin-right:4ex;text-align:left;}
+TD P{margin:0px;}
+.boxed{border:1px solid black}
+.textboxed{border:1px solid black}
+.vbar{border:none;width:2px;background-color:black;}
+.hbar{border:none;height:2px;width:100%;background-color:black;}
+.hfill{border:none;height:1px;width:200%;background-color:black;}
+.vdisplay{border-collapse:separate;border-spacing:2px;width:auto; empty-cells:show; border:2px solid red;}
+.vdcell{white-space:nowrap;padding:0px;width:auto; border:2px solid green;}
+.display{border-collapse:separate;border-spacing:2px;width:auto; border:none;}
+.dcell{white-space:nowrap;padding:0px;width:auto; border:none;}
+.dcenter{margin:0ex auto;}
+.vdcenter{border:solid #FF8000 2px; margin:0ex auto;}
+.minipage{text-align:left; margin-left:0em; margin-right:auto;}
+.marginpar{border:solid thin black; width:20%; text-align:left;}
+.marginparleft{float:left; margin-left:0ex; margin-right:1ex;}
+.marginparright{float:right; margin-left:1ex; margin-right:0ex;}
+.theorem{text-align:left;margin:1ex auto 1ex 0ex;}
+.part{margin:2ex auto;text-align:center}
+</STYLE>
+</HEAD>
+<BODY >
+<!--HEVEA command line is: /usr/bin/hevea main.tex -->
+<!--CUT DEF chapter 1 --><!--TOC chapter Introduction-->
+<DIV class="center"><H1>Phoenix: A Self-Learning Chess Engine</H1></DIV>
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc1">Chapter&#XA0;1</A>:&#XA0;Introduction</H1><!--SEC END --><P><A NAME="chap:introduction"></A></P><!--TOC section Invention-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc2">1.1</A>:&#XA0;Invention</H2><!--SEC END --><P>
+The precursors of chess originated in India during the Gupta Empire. There, its
+early form in the 6th century was known as Chaturanga, which translates as &#X2019;four
+divisions (of the military)&#X2019;: infantry, cavalry, elephantry, and chariotry.
+These forms are represented by the pieces that would evolve into the modern
+pawn, knight, bishop, and rook, respectively. According to chess historians
+Gerhard Josten and Isaak Linder, &#X2019;the early beginnings&#X2019; of chess can be traced
+back to the Kushan Empire in Ancient Afghanistan, circa 50 BCE - 200 CE&#XA0;[<A HREF="#1">11</A>].</P><P>Though we do not know the exact moment in history when chess was invented, there
+are many stories which are intriguing. One story goes on to say that
+chess was invented by the demon king Ravana during the time of the Ramayana.
+It is said that one day his wife Mandodari complained that she was bored. To
+amuse his queen, he invented chess and taught her the rules of the game. It is
+also said that being a brilliant mind, she promptly beat him at it&#XA0;[<A HREF="#2">17</A>].</P><P>Another story talks about an ancient Indian Brahmin named Sissa as the inventor
+of chess. According to the Persian poet Firdowsi, when Sissa showed his
+invention to the ruler of the country, the ruler was so pleased that he asked
+Sissa to name his prize for the invention. The man cleverly asks for wheat, but
+with a condition. He stipulated that for the first square of the chess board, he
+would receive one grain of wheat, two for the second one, four on the third one,
+and so forth, doubling the amount each time. The king blindly agrees only to 
+realize his mistake later and give his entire kingdom to Sissa as his gift&#XA0;[<A HREF="#3">16</A>].</P><!--TOC section Chess and AI-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc3">1.2</A>:&#XA0;Chess and AI</H2><!--SEC END --><P>
+Many eminent researchers like John McCarthy, Allen Newell, Claude Shannon, Herb
+Simon, Ken Thompson and Alan Turing have put significant effort into computer
+chess research. This is because many factors make chess an excellent domain for
+AI research. Some of them are listed below:&#XA0;[<A HREF="#6">38</A>]
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Richness in the problem-solving domain.
+</LI><LI CLASS="li-itemize">The ability to monitor and record progress accurately through competition 
+and rating because of its well-defined structure.
+</LI><LI CLASS="li-itemize">Chess has been around for centuries - the basics are well-understood 
+internationally, expertise is readily available and is (generally!) beyond 
+proprietary or nationalistic interests. It has been considered a game of 
+intelligence.
+</LI><LI CLASS="li-itemize">Detailed psychological studies of chess playing exist. These studies 
+suggest that human players use different reasoning modes from those in 
+current chess programs. Further, these reasoning modes are also used in many 
+other problem-solving domains.
+</LI><LI CLASS="li-itemize">It is an excellent test bed for uncertainty management schemes which 
+is the basis of most expert problem-solving. The well-defined nature and 
+discreteness of the game have led many to ignore this.
+</LI></UL><!--TOC section Purpose of Research-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc4">1.3</A>:&#XA0;Purpose of Research</H2><!--SEC END --><P>
+The most important factor that influences the strength of a chess engine is the
+way in which it evaluates moves. Humans have mastered this evaluation process
+and use strategies which are abstract and complex. These techniques cannot be
+simulated using a computer because of its limitation to understand abstract
+concepts. Computers can only operate on numbers. Therefore we must represent a
+chess position as a group of numbers. Every positional parameter which might
+influence its goodness must have a numerical equivalent in this group. The
+construction of such a group/vector of number is non-trivial. There are 2 main
+reasons for this:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+A small change in the position can result in a large change in its 
+goodness. For instance, 2 positions which are identical except for the 
+position of a queen, which is offset by a single square, might differ 
+largely in their goodness.
+</LI><LI CLASS="li-itemize">The value of a position might vary from player to player as it depends 
+on the goal he sets for himself. That is, a position might be losing for a 
+defensive player and might be drawable for an attacking player.
+</LI></UL><P>Most chess engines today use brute force methods to simulate this thinking
+process by taking into consideration multiple parameters which influence the
+value of a position. But these parameters are decided by the programmers while
+coding and not by the engine itself. In this thesis, we make the engine learn
+these parameters by itself using genetic algorithms.</P><!--TOC section Chess Notation-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc5">1.4</A>:&#XA0;Chess Notation</H2><!--SEC END --><P>
+Chess notation is the term used for several systems that have been developed to record
+either the moves made in a game of chess or the position of pieces on a
+chessboard. The earliest systems of notation used lengthy narratives to describe
+each move; these gradually evolved into terser notation systems. Currently
+algebraic chess notation is the accepted standard and is widely used. Algebraic
+notation has several variations. Descriptive chess notation was used in English
+and Spanish literature until the late 20th century, but is now
+obsolete. There are some special systems for international correspondence chess&#XA0;[<A HREF="#4">6</A>].</P><P>We are particularly interested in notations used by computers. The standard
+notation used in all chess engines today is the Portable Game Notation (PGN)
+which is a computer friendly version of the Standard Algebraic Notation (SAN). A
+brief description of SAN follows.</P><!--TOC subsection Standard Algebraic Notation (SAN)-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc6">1.4.1</A>:&#XA0;Standard Algebraic Notation (SAN)</H3><!--SEC END --><P>
+SAN (Standard Algebraic Notation) is a representation standard for chess moves
+using the ASCII Latin alphabet. Examples of SAN recorded games are found
+throughout most modern chess publications. SAN as presented in this thesis
+uses English language single character abbreviations for chess pieces, although
+this can easily be changed to other languages.</P><!--TOC subsubsection Square Identification-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Square Identification</H4><!--SEC END --><P>
+SAN identifies each of the sixty four squares on the chessboard with a unique
+two character name. The first character of a square identifier is the <I>file</I> of
+the square; a file is a column of eight squares designated by a single lower
+case letter from &#X2019;a&#X2019; (leftmost or queenside) up to and including &#X2019;h&#X2019; (rightmost
+or kingside). The second character of a square identifier is the <I>rank</I> of the
+square; a rank is a row of eight squares designated by a single digit from &#X2019;1&#X2019;
+(bottom side [White&#X2019;s first rank]) up to and including &#X2019;8&#X2019; (top side [Black&#X2019;s
+first rank]). The initial squares of some pieces are: white queen rook at <I>a1</I>,
+white king at <I>e1</I>, black queen knight pawn at <I>b7</I>, and black king rook at <I>h8</I>.</P><!--TOC subsubsection Piece Identification-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Piece Identification</H4><!--SEC END --><P>
+SAN identifies each piece by a single upper case letter. The standard English
+values are: pawn = &#X2019;P&#X2019;, knight = &#X2019;N&#X2019;, bishop = &#X2019;B&#X2019;, rook = &#X2019;R&#X2019;, queen = &#X2019;Q&#X2019;, and
+king = &#X2019;K&#X2019;. There is no special identification for the pawn.</P><!--TOC subsubsection Move Construction-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Move Construction</H4><!--SEC END --><P>
+A basic SAN move is given by listing the moving piece letter (omitted for pawns)
+followed by the destination square. Capture moves are denoted by the lower case
+letter &#X2019;x&#X2019; immediately prior to the destination square; pawn captures include
+the file letter of the originating square of the capturing pawn immediately
+prior to the &#X2019;x&#X2019; character. SAN kingside castling is indicated by the sequence
+&#X2019;O-O&#X2019;; queenside castling is indicated by the sequence &#X2019;O-O-O&#X2019;.</P><!--TOC subsubsection Check and Checkmate-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Check and Checkmate</H4><!--SEC END --><P>
+If the move is a checking move, the plus sign &#X2019;+&#X2019; is appended as a suffix to the
+basic SAN move notation; if the move is a checkmating move, the octothorpe sign
+&#X2019;#&#X2019; is appended instead&#XA0;[<A HREF="#5">5</A>]. </P><!--TOC chapter Computer Chess-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc7">Chapter&#XA0;2</A>:&#XA0;Computer Chess</H1><!--SEC END --><P><A NAME="chap:computerchess"></A></P><!--TOC section History of Chess Programming-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc8">2.1</A>:&#XA0;History of Chess Programming</H2><!--SEC END --><P>
+The time period between 1949 and 1950 is considered to be the birth of computer
+chess. In 1949, Claude Shannon, an American mathematician, wrote an article
+titled "Programming a Computer for Playing Chess"&#XA0;[<A HREF="#7">45</A>]. The article
+contained basic principles of programming a computer for playing chess. It described two
+possible search strategies for a move, which circumvented the need to consider
+all the variations from a particular position. These strategies will be
+described later when we talk about implementing chess as a computer program.
+Since then, no other strategy has been developed which works better and all
+engines use one of these strategies at their cores.</P><P>About a year later, in 1950, an English mathematician Alan Turing&#XA0;[<A HREF="#8">46</A>]
+(published in 1953) came up with an algorithm aimed at teaching a machine to play chess.
+Unfortunately, at that time there was no machine powerful enough to implement
+such an algorithm. Therefore, Turing worked out the algorithm manually and
+played against one of his colleagues. The algorithm lost, but it was the
+beginning of computer chess.</P><P>In the same year, John von Neumann created a calculating machine which was very
+powerful for that time. The machine was built in order to perform calculations
+for the Manhattan Project. But before it was used there, it was tested by
+implementing an algorithm for playing a simplified variant of chess (6x6
+board without bishops, no castling, no two-square move of a pawn, and some other
+restrictions). The machine played three games: it beat itself with white, lost
+to a strong player, and beat a young girl who had been taught how to play chess
+a week before&#XA0;[<A HREF="#9">29</A>].</P><P>In 1958, a great leap in the area was made by scientists at Carnegie-Mellon
+University in Pittsburgh. Their algorithm, called alpha-beta algorithm or
+alpha-beta pruning, the modern version of which is considered in detail later in
+this section, allowed the pruning of a considerable number of moves without having
+any penalties in further evaluation. With this, the number of position
+evaluations per unit time increased by a factor of 5.</P><P>Another interesting idea to improve computer&#X2019;s expertise was proposed by Ken
+Thompson. He reorganized the structure of an ordinary computer and built a
+special machine named Belle&#XA0;[<A HREF="#10">22</A>], whose only purpose was to play chess.
+This machine appeared to be much stronger than any existing computer and held the
+leading position among all chess playing computers for a long period in the
+1980s, until the advent of &#X2019;Hi-tech&#X2019;, a chess computer developed by Hans Berliner
+from Carnegie-Mellon University, and the &#X2019;Cray X-MPs&#X2019;&#XA0;[<A HREF="#9">29</A>].</P><P>Since then the progress in computer chess is mainly the result of the ever
+increasing computing power. By the end of 1980s, an independent group of
+students made their own chess computer called Deep Thought that happened to be
+the prototype of the immortal Deep Blue which won against the then world chess
+champion Garry Kasparov in 1997&#XA0;[<A HREF="#11">35</A>].</P><!--TOC section Chess Engine Internals-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc9">2.2</A>:&#XA0;Chess Engine Internals</H2><!--SEC END --><!--TOC subsection The Board-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc10">2.2.1</A>:&#XA0;The Board</H3><!--SEC END --><P>
+A chess program needs an internal board representation to maintain chess
+positions for its search, evaluation and game-play. Beside modeling the
+chessboard with its piece-placement, some additional information is required to
+fully specify a chess position, such as side to move, castling rights, possible
+<I>en passant</I> target square and the number of reversible moves to keep track on the
+fifty-move rule&#XA0;[<A HREF="#12">4</A>].</P><P>There are 2 main ways of representing a chess board: Mailbox and Bit boards. A
+brief description of each is given below.</P><!--TOC subsubsection Mailbox-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Mailbox</H4><!--SEC END --><P>
+The mailbox representation was one of the original ideas sketched out by Shannon
+in&#XA0;[<A HREF="#7">45</A>]. During his time the computing power and memory of the largest
+computers were nothing compared to what we have today. Therefore programmers
+always aimed at optimizing a program, sometimes at the
+cost of increasing its memory requirements.</P><P>According to this representation, the chessboard itself consists of 64 integers
+each from -6 to 6 (negative numbers represent the black pieces and vice versa.
+Empty squares are represented by 0). Another integer is used to indicate the
+side to move. This is not an optimal representation of a position but as
+mentioned previously, simplifies calculations. A move is described by specifying
+three parameters: index of the source square, index of the destination square
+and another to take care of pawn promotions as and when they happen.</P><P>The program then assigns the value of the source square to the destination
+square (or the value of the third parameter in the case of promotion) and then 0
+to the source square. This is a convenient and efficient way of describing a
+move, and a similar (if not the same) idea is used in the implementations of
+most board games involving 2 players. The main drawback of such a representation
+is finding the edges of the board so as to prevent the pieces from moving
+outside the board.</P><!--TOC subsubsection Bit Boards-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Bit Boards</H4><!--SEC END --><P>
+Another approach called Bit boards was invented independently by two groups of
+scientists: one from the Institute of Theoretical and Experimental Physics in
+Moscow, USSR, and one from Carnegie-Mellon University, Pittsburgh, USA, led by
+Hans Berliner. They represented each square of the chess board by a single bit,
+thus using just one 64-bit computer word to represent any state of the board.
+The entire chess board position could now be represented in 12 such words (one
+for each piece). Each Bit board is filled with zeros except for the bit which
+represents the square where the particular piece is present.</P><P>Two more Bit boards that contain all white pieces and all black pieces present
+on the board, respectively, are usually used. The bit boards containing the
+squares, to which a certain piece on a certain square is allowed to move, can be
+easily constructed using Boolean operations. Other information like King safety
+squares can also be stored using Bit boards if the developer wishes to. But, <I>en
+passant</I> and castling possibilities must be kept in separate variables.</P><P>As mentioned above, it is very easy to derive additional information from these
+boards. For instance, it greatly simplifies finding the legal moves for a piece:
+all the program has to do is to perform logical AND operation on the Bit board
+representing all possible moves of the piece with the negation of all other Bit
+boards which represent pieces of the same color. For more such examples and a
+comparison between Mailbox and Bit board representations see&#XA0;[<A HREF="#13">28</A>].</P><!--TOC subsection Move Search-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc11">2.2.2</A>:&#XA0;Move Search</H3><!--SEC END --><P>
+Like most 2 player board games, the game of chess can be represented as a huge
+tree with the starting position as the root, all subsequently possible positions
+as its nodes and all terminal positions as its leaves. Therefore it is possible
+to scan the tree and find a path leading to victory from almost any given
+position.</P><P>For instance, in a standard game of Tic-Tac-Toe (using the 3&#XD7;3 board),
+the overall number of final positions is less than 9! and it takes less than a
+second for a modern computer to find the best path. In chess however, for each
+move played, there are generally about 30-35 different reply moves which can be
+played. Thus, assuming that an average game finishes in 60 moves i.e. 120 plies<SUP><A NAME="text1" HREF="#note1">1</A></SUP>,
+we get 30<SUP>120</SUP>&#X2248;1.8&#XD7;10<SUP>177</SUP>
+leaves. This is more than the assumed number of atoms in the Universe squared!</P><P>Of course, it is to be noted that only a few moves among the 30-35 are really
+playable in any position if the player wishes to win. For example, the move
+&#X2019;<I>Qxe4 d5xQ</I>&#X2019; makes sense only when the sacrificing side is going to mate
+soon or will take the opponent&#X2019;s queen <I>en prise</I> later. Otherwise the game is most
+certainly lost.</P><P>The number of valuable moves varies for different positions, but on average
+there are not more than 4-5 such moves. Even this does not solve the problem, since the
+number 5<SUP>120</SUP>&#X2248;7.5&#XD7;10<SUP>83</SUP> is
+still humongous. But this question, i.e. selecting only few moves for consideration
+and ignoring the rest, is described already by Shannon in&#XA0;[<A HREF="#7">45</A>]. It is named
+&#X2019;type-B&#X2019; strategy, whereas the other technique where no move is omitted is called
+&#X2019;type-A&#X2019; strategy.</P><P>We know that humans always use type-B strategy, but the thinking process behind
+this is not yet quantifiable in terms of numbers and operations between them.
+Therefore we cannot program computers to use type-B strategy directly. History
+has only proved this fact: most computer chess programs using this strategy
+eventually overlooked the losing move, which seems unlikely to happen, according
+to the algorithms they used. Therefore the problem of creating a move generator
+that never fails is far from being solved&#XA0;[<A HREF="#13">28</A>].</P><!--TOC subsection Minimax Search-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc12">2.2.3</A>:&#XA0;Minimax Search</H3><!--SEC END --><P>
+From the previous section we can conclude that it is reasonable for computers to
+evaluate positions up to a certain depth and then move, instead of traversing
+till the leaves. One technique used in this sort of evaluation is the <I>minimax</I>.
+After each ply, the algorithm rescans the game tree to the same depth, but
+starting at a level lower (in other words, going one level deeper), and thus
+obtaining acceptable results each time.</P><P>The word <I>minimax</I> expresses the idea of minimal loss and maximal profit. That is,
+the algorithm tries to minimize the maximum loss or maximize the minimum profit
+of a player. It means that 2 best values, the minimum and the maximum are
+considered. The best move is the one that leads to a position with the best
+evaluation score for the side to move.</P><P>In order to get a clear understanding, let&#X2019;s consider an example of such a
+process of choosing minima and maxima. Assume that we have an initial position
+with white to move and the depth to which the search is performed is 4 plies (2
+full moves). Also, assume that the evaluation function returns white&#X2019;s score and
+it is symmetrical i.e. white&#X2019;s score is equal to black&#X2019;s score, but with the
+opposite sign. This situation is shown in Fig. <A HREF="#full_search">2.1</A>. Here grey squares are the
+nodes from which the minimum value is chosen (at each level) and white squares
+are the nodes from which the maximum value is chosen.</P><P>The last move is made by black. It means that end positions must be
+considered from black&#X2019;s point of view and hence, the best move is the one that
+provides the lowest score or simply the minimum. At a higher level, all the
+numbers which were lifted up must again be compared with other nodes of that
+level and the one with the maximum value must be selected since it is white&#X2019;s
+turn. This procedure of alternation is repeated until the root of the tree is
+reached, where the maximum value is picked and the appropriate move is made.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>
+<IMG SRC="./Images/full_search.png"></DIV>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2.1: Full Game Tree</TD></TR>
+</TABLE></DIV>
+<A NAME="full_search"></A><P><BR>
+</P><DIV CLASS="center"><IMG SRC="./Images/minimax.png">
+</DIV><DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2.2: The Minimax Algorithm</TD></TR>
+</TABLE></DIV><P>
+<A NAME="minimax"></A>
+</P><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE><!--TOC subsection Alpha-Beta Pruning-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc13">2.2.4</A>:&#XA0;Alpha-Beta Pruning</H3><!--SEC END --><P>
+Let us again consider Fig. <A HREF="#full_search">2.1</A> and the depth-first method of
+observing the tree, which is usually used in modern computer chess programs&#XA0;[<A HREF="#14">39</A>]. Assume that
+we have already searched the tree till leaf 8 which has an evaluation score of -15.
+We can see that the score at node 3 is -6 i.e. if white chooses the path
+to node 3, the worst score it may get is -6. But if it plays to node 7, it gets
+-15. This can be determined by just considering the first reply. It means that
+there is no reason to consider all other replies to the move at node 7 which
+have not been considered at the moment, since white will in any case play the
+move leading to node 3. In other words, we can simply skip considering leaf 9.</P><P>Using this line of reasoning, we can skip other leaves such as 12 and 13. The
+same procedure can be applied at the level above by reversing the logic i.e.
+taking the maximum instead of minimum. For instance, there is no reason to
+consider nodes 17 and 19 (and their children), since black will always choose
+the path leading to node 2. And finally, the entire sub-tree rooted at node 26
+can be skipped, since white will always play to node 1, which gets a final score
+of -6, rather than to node 21, which already has a score of -7 with incomplete
+search.</P><P>The method described above is called
+&#X3B1;-&#X3B2; algorithm or 
+&#X3B1;-&#X3B2;
+pruning and according to&#XA0;[<A HREF="#14">39</A>], was first presented in&#XA0;[<A HREF="#15">42</A>]. 
+Later in&#XA0;[<A HREF="#16">37</A>], the topic was reviewed and strengthened with a proof of 
+correctness and time complexity evaluation.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/ab_pruning.png"></DIV>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2.3: Alpha-Beta Pruning Algorithm</TD></TR>
+</TABLE></DIV>
+<A NAME="ab_pruning"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></BLOCKQUOTE><P>At every stage, when there is no need to examine the rest of the sub-tree, it is
+cut-off. Values
+&#X3B1; and &#X3B2;
+are white&#X2019;s and black&#X2019;s best scores found so far. The main advantage of this
+algorithm is that we get the same result as we would if the entire tree were to be examined. 
+The sketch of this algorithm&#XA0;[<A HREF="#16">37</A>] is given in Fig. <A HREF="#ab_pruning">2.3</A>.</P><!--TOC subsection Transposition Tables-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc14">2.2.5</A>:&#XA0;Transposition Tables</H3><!--SEC END --><P>
+There are many ways to reach the same position in chess. For instance:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<I>1. e4 e5 2. Nf3 Nc6</I>
+</LI><LI CLASS="li-itemize"><I>1. Nf3 Nc6 2. e4 e5</I>
+</LI><LI CLASS="li-itemize"><I>1. e4 Nc6 2. Nf3 e5 </I>
+</LI><LI CLASS="li-itemize"><I>1. Nf3 e5 2. e4 Nc6 </I>
+</LI></UL><P>
+Hence it seems natural to prevent a program from considering the same position
+multiple times. To make it clear, consider two positions A<SUP><A NAME="text2" HREF="#note2">2</A></SUP>
+and B<SUP><A NAME="text3" HREF="#note3">3</A></SUP> and a 4-ply search depth. Assume that
+position B is now being searched and the move <I>3. Ng1 Nb8</I> has been just 
+examined and there are still two plies left. Now, this position is exactly the same 
+A which has already been evaluated. Therefore spending time on evaluating
+this position again will be equivalent of searching to a depth of 2 plies and
+not 4. Hence positions which are already seen are stored in <I>Transposition
+Tables</I>.</P><P>To implement such a table we need to uniquely identify every position the
+evaluation routine has seen. One way to do this (the most famous and widely
+used) was suggested by Zobrist in&#XA0;[<A HREF="#18">48</A>]. Zobrist suggested assigning a 32 or
+64-bit random number to each piece located on each square; i.e.
+12&#XD7;64=768 numbers altogether. An
+empty square is assigned 0. A set of numbers is generated for different castling
+possibilities and for <I>en passant</I> capture status.</P><P>Then starting with a null hash key, a XOR operation is performed between the
+current hash key and the random number assigned for the piece on the square in
+question. The procedure is repeated for every square of the board. This value is
+then XORed with random numbers for castling and <I>en passant</I> possibilities.
+Finally, if it is black&#X2019;s turn, the result is again XORed with another random
+number. This number is a hash key for the current position.</P><P>Of course the total number of positions in chess is much larger than the
+largest number which can be held in 64 bits. The probability of two positions to
+have the same hash key is small but greater than zero. Therefore it is possible
+to repeat the whole procedure described above with different random numbers,
+thus obtaining a second hash key for the same position. The probability of two
+different positions to have identical hash keys is small enough to provide
+uniqueness of positions within a single game.</P><P>There is no definite rule as to how a transposition table should be filled. This
+is because the size of hash keys as well as the size of the table depends on the
+resources available. Also, the number of unique hash keys is far greater than
+what can be stored in such tables. Therefore the hash keys must somehow be
+mapped onto the table indices. One method is to simply obtain the
+index as a remainder of the current hash key when divided by the size of the
+transposition table.</P><P>Hence in every game there will be a number of positions that will point to the
+same entry. To handle this, there should be a measure of the age of a
+position so that the chess engine knows if a certain position is old enough to
+be replaced with the new one. Naturally, the more entries a transposition table
+has, higher the probability of a position to be found in it.</P><!--TOC subsection Move Ordering and Killer Move Heuristic-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc15">2.2.6</A>:&#XA0;Move Ordering and Killer Move Heuristic</H3><!--SEC END --><P>
+Coming back to &#X3B1;-&#X3B2; pruning,
+it is very important to have moves ordered in such a way that there are as many
+cut-offs during the search process as possible.
+Evidently, the most cut-offs happen when the best moves are searched first. This
+problem is considered to be among the most important ones in the area of
+&#X3B1;-&#X3B2; search in computer chess.</P><P>Generally it is impossible to know in advance which move proves to be
+the best in every scenario, as otherwise there would be no need to search at
+all. Therefore all we can do is, use prior results and combine them with
+information about the current situation on the board in order to create a
+sequence of moves which is likely to be in the best order.</P><P>To start with, all capture moves are worth considering first. For simplicity, we
+do not talk about special cases such as when the reply makes a check with
+a fork<SUP><A NAME="text4" HREF="#note4">4</A></SUP> to opponent&#X2019;s
+queen or starts a mating attack.
+These situations are much rarer and are handled in some special way. Pawn
+promotion can also be considered as a capture move as it changes the
+material balance on the board.</P><P>Next, all checks should be considered and then rest of the moves. This approach
+however, uses only information at hand and is obtained for every position
+independently of the game history. Another refinement consists of storing
+details of the search performed so far. For instance, it does not matter if a
+pawn moves one or two squares if the reply is a queen capture (<I>1. ... h5 2. Qxa5
+or 1. ... h6 2. Qxa5</I> in Fig. <A HREF="#valuable_useless_moves">2.4</A>). Therefore the
+sub-tree rooted at the queen capture can be cut-off and this move can be added to the top of the move list to
+be evaluated.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/valuable_useless_moves.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2.4: Valuable and Useless Moves</TD></TR>
+</TABLE></DIV>
+<A NAME="valuable_useless_moves"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>
+This idea is referred to as the <I>Killer Heuristic</I> and the moves that caused
+quick cut-offs are named <I>killer moves</I>. All this and some additional detailed
+information on the techniques used for move ordering can be found
+in&#XA0;[<A HREF="#17">32</A>] and&#XA0;[<A HREF="#19">40</A>].</P><!--TOC subsection History Table-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc16">2.2.7</A>:&#XA0;History Table</H3><!--SEC END --><P>
+As discussed previously, we can place some moves for the current position onto
+the top of the search list based on the scores they achieved a move ago. The History
+Table approach suggests a similar technique wherein we store information about
+all recently examined moves and not just the killer moves&#XA0;[<A HREF="#17">32</A>]. The
+advantage here is that, it is possible to accumulate information about the effectiveness of
+each move in the entire game tree unlike in Killer Heuristic where only a
+certain sub-tree is considered.</P><P>Each time a move proved to be good (caused a quick cut-off or achieved a high
+evaluation score), its characteristic which indicates how good this move is, is
+increased and the greater this characteristic, higher is the move&#X2019;s privilege
+in the list. For example, the move that was placed among the best ones 2 plies
+ago will still have a good characteristic and can be placed at the top even if a
+different piece can move now. Thus in Fig. <A HREF="#valuable_useless_moves">2.4</A>, after
+the game continued <I>1. ... Qxc3 2. Bxc3</I>, white&#X2019;s move <I>Bxf6</I> (instead of <I>Qxf6</I> a move ago) is still dangerous.
+Of course all this makes sense only for a certain period of time and hence the
+history table must be cleaned periodically.</P><!--TOC subsection Iterative Deepening-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc17">2.2.8</A>:&#XA0;Iterative Deepening</H3><!--SEC END --><P>
+Usually in chess, it is time that restricts the quality of moves in both humans
+and machines. As discussed already, a skilled human who uses type-B strategy and
+focuses on several mostly acceptable moves will generally fare well, whereas a
+machine cannot do so always. Therefore it is important for a machine to choose
+the best move within the given constraints (usually in a few
+seconds). Due to this sort of restrictions, machines usually cannot evaluate
+every move as desired by its algorithm.</P><P><I>Iterative Deepening</I> tries to solve this problem. In this method, the
+program searches for moves in a breadth-first manner rather than the usual
+depth-first technique. In case the timer expires, it returns the best move
+belonging to the deepest level which has been searched completely. As stated
+in&#XA0;[<A HREF="#17">32</A>], the advantage of this method is that the number of nodes to be
+visited in successive iterations put together is generally much smaller than
+that of a single non-iterative search that goes depth-first. Another factor
+which influences the goodness of this technique is the fact that move ordering
+becomes easier when the search is made level by level which in turn improves the
+effectiveness of the &#X3B1;-&#X3B2;
+pruning algorithm.</P><!--TOC subsection Quiescence Search-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc18">2.2.9</A>:&#XA0;Quiescence Search</H3><!--SEC END --><P>
+Let us now consider one more shortcoming of regular search through the following
+example.
+Assume that the search depth is 5 plies and at the 5th ply there is a move
+which takes the opponent&#X2019;s pawn with the rook. As it is the last ply and future
+moves cannot be considered, the evaluation function is called and the score is
+returned. Now the apparent result is that the moving side wins a pawn and
+therefore the move leading to this position is estimated as a favorable
+one.</P><P>But on the 6th ply, there may be a move with which the opponent simply takes
+back and goes a whole rook up. This kind of behavior, when a program is not able to
+see enough into the future, is called the Horizon Effect&#XA0;[<A HREF="#20">20</A>]. Of course,
+after the corresponding game path is chosen and a move is made, the game goes one
+level down and now the program can reach one level deeper and see the recapture.
+But what if the chosen move leads to the loss anyway? For example, instead of
+the rook capture there may be a bishop capture in the best case scenario.
+Situations such as these are unpredictable and dangerous.</P><P>Since every position during game play is not ready for the evaluation, only
+relatively <I>quiescent</I> positions&#XA0;[<A HREF="#7">45</A>] where the least possible action
+takes place should be evaluated (such positions are also called <I>dead</I>
+positions in&#XA0;[<A HREF="#21">47</A>]).
+This is why all capture moves and pawn promotions are usually considered separately and
+searched till a depth where the results of all material changes finally
+appear. In addition, moves are ordered in a special way depending on the taking
+piece and the piece to be taken in <I>most valuable victim/least valuable aggressor</I>
+manner.</P><P>More details can be found in&#XA0;[<A HREF="#17">32</A>]. Special considerations should also be
+given to check moves because they always allow only a few forced replies and the
+actual situation is not apparent. There may also be an explosion in the number
+of nodes to be considered when there is a series of checks given continuously.
+This situation can be resolved by limiting the number of extra plies given to
+inspect check moves. In&#XA0;[<A HREF="#13">28</A>] a value of 2 is said to be the mostly used
+one.</P><!--TOC subsection Null Move-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc19">2.2.10</A>:&#XA0;Null Move</H3><!--SEC END --><P>
+Null move&#XA0;[<A HREF="#22">18</A>]&#XA0;[<A HREF="#23">26</A>]&#XA0;[<A HREF="#24">30</A>] as the name suggests, means skipping a
+turn and allowing the opponent to play 2 moves in a row. The idea here is to see if the
+opponent can change the situation of the game adversely by playing twice. If the
+result of applying a null move is acceptable for the skipping side, there is no
+need to continue with the full search because it most likely leads to a
+cut-off&#XA0;[<A HREF="#17">32</A>].</P><P>The significance of this technique is that it takes away a whole ply from the
+current search tree and hence the program needs to traverse the search tree to a
+depth of N-1 instead of the original N. In the middle of the game, when the
+number of legal moves is about 30-35, applying null moves take only about 3% of
+the time. In case of success i.e. a null move results in chipping off one ply,
+the program saves 97% of the time required to make a move by pure searching. If
+the application of null moves fails, only 3% of the total time is wasted.</P><P>However, there are special situations known as Zugzwang<SUP><A NAME="text5" HREF="#note5">5</A></SUP> in which a null move is
+the only way to avoid loss. But applying null moves to such positions will lead to mistakes. 
+In position A of Fig. <A HREF="#zugzwang">2.5</A>, black does not have a
+move which will maintain the current material balance. That is, any good move
+(such as <I>Ke8, Kf8, Kf7, Kf6</I> or <I>Rb7</I>) allows white to win the
+pawn on d6. Other possible moves (such as <I>Bc7, Rc7</I> or <I>Ra7</I>) lose even more material. The situation
+in position B is not so evident at first glance and requires deeper analysis.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/zugzwang.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2.5: Zugzwang Positions</TD></TR>
+</TABLE></DIV>
+<A NAME="zugzwang"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>Zugzwang positions are almost always losing. Therefore the loss of performance
+generally does not affect the final result. On the other hand according
+to&#XA0;[<A HREF="#17">32</A>], Zugzwang happens extremely rarely in chess with the notable
+exception of late endgames. Therefore application of null moves is usually 
+stopped when the number of pieces left on the board is less than some predefined 
+value. So the null move refinement is worth being implemented, especially if the
+aim is to increase search speed.</P><!--TOC subsection Opening and End Games-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc20">2.2.11</A>:&#XA0;Opening and End Games</H3><!--SEC END --><P>
+Since chess play can lead to so many different positions, it is often useful to
+memorize a few moves which can be played directly if a certain pattern occurs on
+the board. Therefore people started documenting games played by higher ranking
+players and analyze them so that popular or frequently occurring positions can
+be studied and the best moves for them can be memorized for future use.</P><P>Nowadays due to the advent of computer analysis, chess theory has become a huge
+body of knowledge. There are hundreds of books, some of which are entirely
+devoted to a single opening. These books discuss in detail the main lines that
+appear when starting a game with the opening in question and bring out ideas
+and ways to develop pieces which are proved to be the best.</P><P>Since computers were built to store and retrieve data efficiently, storing
+opening lines in a database gives computers the ability to make the best moves
+without any evaluation whatsoever. The same idea can be implemented for endgames
+which are also analyzed deeply and in many cases solved. Every position in an
+endgame database is assigned a value of +&#X221E;
+(victory), -&#X221E; (loss), or 0 (draw);
+the final result of the game assuming perfect play from both sides.</P><P>During move search if there is a positional match with a database entry, that
+position becomes a leaf of the search tree and receives the evaluation score
+from the database directly. According to&#XA0;[<A HREF="#17">32</A>], there are three different
+kinds of endgame databases available (though many more are available today):
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Thompson&#X2019;s collection of 5-piece databases 
+</LI><LI CLASS="li-itemize">Edwards&#X2019; tablebases (gives only depth to mate)
+</LI><LI CLASS="li-itemize">Nalimov&#X2019;s tablebases (up to 6 pieces)
+</LI></UL><P>Nalimov and its derivatives have gained more popularity among recent chess
+programs due to their considerable advantages in indexing and size. Thompson&#X2019;s
+databases which were the first of its kind had a number of disadvantages such as
+slow search in the deeper levels of the game tree. Edwards&#X2019; tablebase tried a
+different approach based on the depth to mate which became a success but with
+the disadvantage of being huge in size. Nalimov&#X2019;s tablebase is actually an
+improvement of Edwards&#X2019; original with advanced indexing schemes. More
+information can be found in&#XA0;[<A HREF="#17">32</A>] where there is an entire chapter devoted
+to endgame databases used by the famous chess program Dark Thought.</P><!--TOC section Evaluation Routine-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc21">2.3</A>:&#XA0;Evaluation Routine</H2><!--SEC END --><P>
+As said earlier, it is neither possible nor advisable to evaluate the whole tree
+of future moves at every stage of a chess game. Therefore we need some measure
+to quantify chess positions so that we can recognize good moves without having
+to traverse till the leaves.</P><P>In general, an evaluation function is a multivariate, linear function which
+measures the goodness of a chess position. There are various features which can
+be extracted from a chess position that will give us some insight into the
+goodness of the position. The inputs to the evaluation function are numbers
+which quantify these features. The output is a single number called the
+<I>Evaluation Score</I>.</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell"><I>F</I>&#XA0;=&#XA0;</TD><TD CLASS="dcell"><TABLE CLASS="display"><TR><TD CLASS="dcell" ALIGN="center"><I>N</I></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><FONT SIZE=6>&#X2211;</FONT></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><I>i</I>&#XA0;=&#XA0;0</TD></TR>
+</TABLE></TD><TD CLASS="dcell">&#XA0;<I>x</I><SUB><I>i</I></SUB>&#XA0;&#XB7;&#XA0;<I>v</I><SUB><I>i</I></SUB>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&#XA0;</TD><TD CLASS="dcell">&#X23A7;<BR>
+&#X23A8;<BR>
+&#X23A9;</TD><TD CLASS="dcell"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD ALIGN=left NOWRAP>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>x</I><SUB><I>i</I></SUB>&#XA0;&#X2208;&#XA0;{0,&#XA0;1}</TD></TR>
+<TR><TD ALIGN=left NOWRAP>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<I>v</I><SUB><I>i</I></SUB>&#XA0;&#X2208;&#XA0;<B><I>R</I></B></TD></TR>
+</TABLE></TD><TD CLASS="dcell">
+,&#XA0;<I>i</I>&#XA0;=&#XA0;</TD><TD CLASS="dcell"><TABLE border=0 cellspacing=1 cellpadding=0><TR><TD CLASS="hbar"></TD></TR>
+<TR><TD ALIGN=center NOWRAP>1,&#XA0;<I>N</I></TD></TR>
+</TABLE></TD><TD CLASS="dcell">
+</TD></TR>
+</TABLE><P>Here <I>x</I><SUB><I>i</I></SUB> indicates the presence of the
+<I>i</I><SUP><I>th</I></SUP> parameter and <I>v</I><SUB><I>i</I></SUB> represents its
+importance as a real number. The position is good for white if this score is positive 
+and vice versa. Also in some programs, a positive score is considered to
+be good for the current player and a negative score for the opponent.</P><P>A chess position is simply a legal permutation of pieces placed on different
+squares on the board. Each piece has a varying degree of importance and
+therefore a value is assigned to each of them. The sum of values of all
+pieces of a particular color is called the <I>material count</I> for that color. The
+difference between the material counts of white and black is known as <I>material
+difference</I> and is considered to be the most important parameter in deciding the
+goodness of a position.</P><P>The evaluation score is generally taken to be
++&#X221E; if the opponent&#X2019;s king is
+checkmated and -&#X221E; if the player&#X2019;s
+king is checkmated.
+Trivial situations like &#X2019;king against king&#X2019;, &#X2019;king against king and knight&#X2019;,
+&#X2019;king against king and bishop&#X2019; along with more complex positions which have
+already been analyzed and known to be drawn positions are put into a database
+with a score of 0. This avoids redundant calculations which ultimately lead to
+wastage of resources.</P><P>However, in general it is not possible to claim equality of two positions taking
+into account only the material balance. In several opening lines, one side is
+ready to sacrifice a pawn on purpose; for e.g. king&#X2019;s gambit accepted
+(<I>1.
+e4 e5 2.
+f4 exf4</I>) and queen&#X2019;s gambit accepted (<I>1. d4 d5 2. c4 dxc4</I>). Here the
+program that uses an opening database must still somehow consider itself to be in an
+advantageous position, even after having one pawn less.</P><P>Sometimes a player can sacrifice quality (like exchanging an inactive rook for
+an active bishop or knight) for achieving some non-material advantage that
+is considered worthwhile. Moreover, highly skilled chess players often agree to
+call the game a draw even when there is material imbalance. So in all these
+situations, other factors apart from the material balance have to be taken into
+consideration during position evaluation. These factors are known as <I>strategic</I>
+or <I>positional parameters</I>.</P><!--TOC subsection Positional Parameters-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc22">2.3.1</A>:&#XA0;Positional Parameters</H3><!--SEC END --><P>
+In non trivial chess engines, it is usually the positional parameters which play
+an important role in evaluation and give the engine an edge during gameplay.
+With the amount of computing resources available today, these parameters when
+combined with fast pruning and deepening techniques can easily achieve
+IM<SUP><A NAME="text6" HREF="#note6">6</A></SUP> if not the GM<SUP><A NAME="text7" HREF="#note7">7</A></SUP> level.
+Therefore it is extremely important to incorporate them into our program if we
+want to build a competitive engine. Some of the most important ones are listed
+below:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+<B>Castling</B>: It is very important for the king to be defended by 
+friendly pieces in the opening and middle games. Pawns in the corner serve as 
+excellent defenders.
+</LI><LI CLASS="li-itemize"><B>Rook on an open file</B>: Rook is the second most powerful piece on
+the board after the queen and has a long reach. But this reach is useless if 
+there are other pieces blocking its way. Therefore rooks should ideally
+be placed on open files which helps a player to initiate an attack.
+</LI><LI CLASS="li-itemize"><B>Rook on a semi-open file</B>: A semi-open file is one in which there are
+only enemy pawns blocking the rook. Placed onto a semi-open file, a rook does
+not allow the opponent to leave his pawn unprotected, thus reducing the
+mobility of his pieces.
+</LI><LI CLASS="li-itemize"><B>Knight&#X2019;s mobility</B>: A knight&#X2019;s mobility is directly dependant on its
+placement. A knight near the center of the board is far more valuable than one at the corners.
+</LI><LI CLASS="li-itemize"><B>(Supported) knight/bishop outpost</B>: Outposts are those squares on the
+opponent&#X2019;s side of the board where a piece cannot be attacked immediately.
+These squares act as launch points for a mating attack.
+</LI><LI CLASS="li-itemize"><B>Bishop pair</B>: A bishop pair is generally very useful in end games when
+there are few pieces left on the board. They are generally used in tandem to force the king out of outposts, break pawn chains and hinder the movement of passed pawns.
+</LI><LI CLASS="li-itemize"><B>Center pawns (</B><B><I>d4, d5, e4, e5</I></B><B>)</B>: The main theme during openings is <I>center
+control</I> which results in healthy development of the minor pieces and hinder the
+opponent&#X2019;s development. This is largely achieved using the &#X2019;d&#X2019; an &#X2019;e&#X2019; pawns.
+</LI><LI CLASS="li-itemize"><B>Doubled pawns</B>: A good pawn structure is very important during
+middle and end games. Doubled pawns are usually considered to be a weakness. When doubled, the upper pawn blocks the lower and in many cases they need to be defended by a piece.</LI></UL><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/positional_factors_1.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2.6: Positional Factors involving minor pieces</TD></TR>
+</TABLE></DIV>
+<A NAME="positional_factors_1"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/positional_factors_2.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 2.7: Positional Factors involving major pieces</TD></TR>
+</TABLE></DIV>
+<A NAME="positional_factors_2"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><UL CLASS="itemize"><LI CLASS="li-itemize">
+<B>Backward pawn</B>: A backward pawn generally holds an entire pawn chain in place. It is the pawn of a chain which is nearest to the back rank. Usually another piece must guard this against attacks which can be disadvantageous.
+</LI><LI CLASS="li-itemize"><B>Rook(s) on the </B><B>7</B><SUP><B><I>th</I></B></SUP><B> rank</B>: Rook(s) on the 7<SUP><I>th</I></SUP> rank
+impede the movement of the opponent&#X2019;s pieces and also act as a very strong
+launch pad for the start of a mating attack as the opponent&#X2019;s king will
+generally be confined to the 8<SUP><I>th</I></SUP> rank.
+</LI><LI CLASS="li-itemize"><B>Connected rooks</B>: When two rooks are on the same file/rank
+without pawns or pieces between them, they are said to be connected. Connected rooks 
+are untouchable as they support each other and can cause huge damage.
+</LI><LI CLASS="li-itemize"><B>Passed pawn</B>: A pawn is said to be passed when there are no enemy pawns
+on its file or on either of the adjacent files. This pawn is usually considered very 
+important as it has a high probability of getting promoted during end games.
+</LI><LI CLASS="li-itemize"><B>Rook-supported passed pawn</B>: When there is a passed pawn on the board, a
+general rule of thumb is to put a rook behind it. This prevents the opponent from capturing the pawn easily and forces him to block the pawn with a piece.
+</LI><LI CLASS="li-itemize"><B>Isolated pawns</B>: An isolated pawn has no friendly pawns on either of the
+adjacent files. This becomes a weak point in the game as it requires constant support from one of the other pieces.
+</LI><LI CLASS="li-itemize">	<B>Bishops on the large diagonals</B>: <I>a1-h8</I> and <I>h1-a8</I> are known as the large
+diagonals. When bishops are placed along these diagonals, they can be tucked
+into corners while maintaining their reach. This is greatly used to mount an
+attack on the enemy king during closed<SUP><A NAME="text8" HREF="#note8">8</A></SUP> middle games.
+</LI></UL><P>There are many other parameters which can be considered like pawn structures and
+closeness of positions. But the ones mentioned above can be easily represented
+using PVTs<SUP><A NAME="text9" HREF="#note9">9</A></SUP> which will greatly simplify the
+evaluation and learning process which is the main aim of this thesis. </P><!--BEGIN NOTES chapter-->
+<HR CLASS="footnoterule"><DL CLASS="thefootnotes"><DT CLASS="dt-thefootnotes">
+<A NAME="note1" HREF="#text1">1</A></DT><DD CLASS="dd-thefootnotes">2 plies make 1 full move
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note2" HREF="#text2">2</A></DT><DD CLASS="dd-thefootnotes">A: <I>1. e4 e5</I>
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note3" HREF="#text3">3</A></DT><DD CLASS="dd-thefootnotes">B: <I>1. e4 e5 2. Nf3 Nc6</I>
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note4" HREF="#text4">4</A></DT><DD CLASS="dd-thefootnotes">a piece attacking two other pieces simultaneously
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note5" HREF="#text5">5</A></DT><DD CLASS="dd-thefootnotes">German for
+compulsion to move or forced to move
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note6" HREF="#text6">6</A></DT><DD CLASS="dd-thefootnotes">International Master
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note7" HREF="#text7">7</A></DT><DD CLASS="dd-thefootnotes">Grandmaster
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note8" HREF="#text8">8</A></DT><DD CLASS="dd-thefootnotes">A position is said to be closed
+when there are 6 or more pawns occupying the 16 central squares
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note9" HREF="#text9">9</A></DT><DD CLASS="dd-thefootnotes">Positional Value Tables
+</DD></DL>
+<!--END NOTES-->
+<!--TOC chapter Initial Ideas-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc23">Chapter&#XA0;3</A>:&#XA0;Initial Ideas</H1><!--SEC END --><P><A NAME="chap:initial_ideas"></A></P><P>Before genetic algorithms, we tried many other techniques which are considered
+to be good for machine learning. Since our main intention was to make a computer
+learn chess without any external help, our choices were limited to techniques
+which have the ability to interpret data and recognize underlying abstract
+patterns or features without human intervention.</P><P>That is, given a raw position the computer must be in a position to analyze its
+goodness without us having to tell the computer how to break this position down
+into a quantifiable features which can then be compared or learnt. In the next 2
+sections, we briefly introduce <I>Neural Networks</I> and <I>Deep Learning</I> mechanisms
+which were used initially as learning tools and also explain why these
+techniques failed.</P><!--TOC section Neural Networks-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc24">3.1</A>:&#XA0;Neural Networks</H2><!--SEC END --><!--TOC subsection Neuron-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc25">3.1.1</A>:&#XA0;Neuron</H3><!--SEC END --><P>
+Artificial Neural Networks are inspired from Biology and extensively used in
+Pattern Recognition and Machine Learning. The fundamental building block for
+neural networks is a <I>neuron</I>. A neuron basically acts as an independent
+processing unit. Each neuron has a set of input links from other neurons, a set
+of output links to other neurons and an <I>activation threshold</I>. If the input is
+greater than this threshold, the neuron is activated. Within neural systems it
+is useful to distinguish 3 types of neurons:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Input neurons which receive data from external sources
+</LI><LI CLASS="li-itemize">Hidden neurons whose input and output remain within the network
+</LI><LI CLASS="li-itemize">Output neurons which send data out of the neural network
+</LI></UL><P>
+These neurons are connected together in some fashion to from neural networks.
+Each connection between neurons are associated with weights which are the 
+primary means of long-term storage in neural networks, and learning usually 
+takes place by updating these weights.</P><!--TOC subsection McCulloch-Pitts Model-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc26">3.1.2</A>:&#XA0;McCulloch-Pitts Model</H3><!--SEC END --><P>
+There are 2 equations which represent the McCulloch-Pitts model for a neuron.
+They are:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">&#XA0;
+&#X3B6;&#XA0;=&#XA0;</TD><TD CLASS="dcell"><TABLE CLASS="display"><TR><TD CLASS="dcell" ALIGN="center">&nbsp;</TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><FONT SIZE=6>&#X2211;</FONT></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><I>i</I></TD></TR>
+</TABLE></TD><TD CLASS="dcell"><I>w</I><SUB><I>i</I></SUB>&#XA0;&#XB7;&#XA0;<I>x</I><SUB><I>i</I></SUB>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.1)</TD></TR>
+</TABLE><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+<I>y</I>&#XA0;=&#XA0;&#X3C3;(&#X3B6;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.2)</TD></TR>
+</TABLE><P>
+where &#X3B6; is the weighted sum of the inputs (the inner
+product of the input vector and the weight vector) and
+ &#X3C3;(&#X3B6;) is a function of the weighted sum. If we
+recognize that the weight and input elements form vectors <I>w</I> and <I>x</I>, the 
+&#X3B6; weighted sum becomes a simple dot product:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+&#X3B6;&#XA0;=&#XA0;<I>W</I>&#XA0;&#XB7;&#XA0;<I>x</I>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.3)</TD></TR>
+</TABLE><P>
+This may be called as either the <I>activation function</I> (in the case of a threshold
+comparison) or a <I>transfer function</I>. In neurons, the division between the process 
+of calculating the input sum using the weight vecto, and the calculation of the 
+output value using the activation function may not be made explicitly.</P><P>The inputs to the network, <I>x</I>, come from an input space and
+the system outputs are part of the output space. For some networks, the output
+space <I>Y</I> may be as simple as {0, 1} or it may be a
+complex multi-dimensional space. Neural networks tend to have one input per degree of freedom in the input space and
+one output per degree of freedom in the output space. The weight vector is
+updated during training by various algorithms of which the <I>Backpropagation
+Algorithm</I> is the most popular&#XA0;[<A HREF="#25">3</A>].</P><!--TOC subsection Backpropagation-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc27">3.1.3</A>:&#XA0;Backpropagation</H3><!--SEC END --><P>
+The backpropagation algorithm is one of the most popular and robust tools in the
+training of artificial neural networks. Backpropagation passes error signals
+backwards through the network during training to update the weights of the
+network. To make things clear, it is useful to define a term called <I>interlayer</I>
+to be a layer of neurons and the corresponding input weights to that layer. We
+use a superscript to denote a specific interlayer, and a subscript to denote the
+specific neuron from within that layer. For instance:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+&#X3B6;<SUB><I>j</I></SUB><SUP><I>l</I></SUP>&#XA0;=&#XA0;</TD><TD CLASS="dcell"><TABLE CLASS="display"><TR><TD CLASS="dcell" ALIGN="center"><I>N</I><SUP><I>l</I>&#X2212;1</SUP></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><FONT SIZE=6>&#X2211;</FONT></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><I>i</I>=1</TD></TR>
+</TABLE></TD><TD CLASS="dcell"><I>w</I><SUB><I>ij</I></SUB><SUP><I>l</I></SUP><I>x</I><SUB><I>i</I></SUB><SUP><I>l</I>&#X2212;1</SUP>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.4)</TD></TR>
+</TABLE><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+<I>x</I><SUB><I>j</I></SUB><SUP><I>l</I></SUP>&#XA0;=&#XA0;&#X3C3;(&#X3B6;<SUB><I>j</I></SUB><SUP><I>l</I></SUP>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.5)</TD></TR>
+</TABLE><P>
+where <I>x</I><SUB><I>i</I></SUB><SUP><I>l</I>&#X2212;1</SUP> are the outputs from the previous
+interlayer (the inputs to the current interlayer),
+<I>w</I><SUB><I>ij</I></SUB><SUP><I>l</I></SUP> is the weight from the
+<I>i</I><SUP><I>th</I></SUP> input from the previous interlayer to the <I>j</I><SUP><I>th</I></SUP>
+element of the current interlayer.
+<I>N</I><SUP><I>l</I>&#X2212;1</SUP> is the total number of neurons in the previous
+interlayer.</P><P>The backpropagation algorithm specifies that the weights of the network are updated 
+iteratively during training to approach the minimum of the error function. This is 
+done through the following equations:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+<I>w</I><SUB><I>ij</I></SUB><SUP><I>l</I></SUP>[<I>n</I>]&#XA0;=&#XA0;<I>w</I><SUB><I>ij</I></SUB><SUP><I>l</I></SUP>[<I>n</I>&#X2212;1]&#XA0;+&#XA0;&#X3B4;&#XA0;<I>w</I><SUB><I>ij</I></SUB><SUP><I>l</I></SUP>[<I>n</I>]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.6)</TD></TR>
+</TABLE><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+<I>w</I><SUB><I>ij</I></SUB><SUP><I>l</I>&#X2212;1</SUP>[<I>n</I>]&#XA0;=&#XA0;&#X3B7;&#XA0;&#X3B4;<SUB><I>j</I></SUB><SUP><I>l</I></SUP><I>x</I><SUB><I>i</I></SUB><SUP><I>l</I>&#X2212;1</SUP>[<I>n</I>]+&#XB5;&#XA0;&#X394;&#XA0;<I>w</I><SUB><I>ij</I></SUB><SUP><I>l</I></SUP>[<I>n</I>&#X2212;1]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.7)</TD></TR>
+</TABLE><P>
+The relationship between this algorithm and the gradient descent algorithm
+should be immediately apparent. Here, &#X3B7; is known as the
+learning rate and affects the rate of convergence of the algorithm. If the learning rate is too small, 
+the algorithm will take a long time to converge. If the learning rate is too 
+large, the algorithm might oscillate or diverge. </P><P>&#XB5; is known as the momentum parameter. The
+momentum forces the search to take into account the direction of movement from the previous
+iteration. By doing so, the system will tend to avoid local minima and approach
+the global minimum. The parameter &#X3B4; is what makes
+this algorithm a &#X2019;back propagation&#X2019; algorithm. We calculate it as follows:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+&#X3B4;<SUB><I>j</I></SUB><SUP><I>l</I></SUP>&#XA0;=&#XA0;</TD><TD CLASS="dcell"><TABLE CLASS="display"><TR><TD CLASS="dcell" ALIGN="center"><I>dx</I><SUB><I>j</I></SUB><SUP><I>l</I></SUP></TD></TR>
+<TR><TD CLASS="hbar"></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><I>dt</I></TD></TR>
+</TABLE></TD><TD CLASS="dcell">&#XA0;</TD><TD CLASS="dcell"><TABLE CLASS="display"><TR><TD CLASS="dcell" ALIGN="center"><I>r</I></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><FONT SIZE=6>&#X2211;</FONT></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><I>k</I>=1</TD></TR>
+</TABLE></TD><TD CLASS="dcell">&#X3B4;<SUB><I>k</I></SUB><SUP><I>l</I>+1</SUP>&#XA0;<I>w</I><SUB><I>kj</I></SUB><SUP><I>l</I>+1</SUP>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.8)</TD></TR>
+</TABLE><P>
+The &#X3B4; function for each layer depends on the &#X3B4; from the previous layer. For the
+special case of the output layer (the highest layer), we use this equation instead:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+&#X3B4;<SUB><I>j</I></SUB><SUP><I>l</I></SUP>&#XA0;=&#XA0;</TD><TD CLASS="dcell"><TABLE CLASS="display"><TR><TD CLASS="dcell" ALIGN="center"><I>dx</I><SUB><I>j</I></SUB><SUP><I>l</I></SUP></TD></TR>
+<TR><TD CLASS="hbar"></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><I>dt</I></TD></TR>
+</TABLE></TD><TD CLASS="dcell">(<I>x</I><SUB><I>j</I></SUB><SUP><I>l</I></SUP>&#XA0;&#X2212;&#XA0;<I>y</I><SUB><I>j</I></SUB>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.9)</TD></TR>
+</TABLE><P>
+In this way, the signals propagate backwards through the system from the output
+layer to the input layer&#XA0;[<A HREF="#26">2</A>].</P><!--TOC subsection Implementation-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc28">3.1.4</A>:&#XA0;Implementation</H3><!--SEC END --><P>
+Initially we generated training data by logging each position considered by
+Stockfish&#XA0;[<A HREF="#27">13</A>] and its evaluation scores while playing 5 minute games
+against itself. Generally a good engine like Stockfish searches the game tree till it
+reaches a depth of 16. This means that on average, before making any move, the
+engine considers anywhere between 10<SUP>3</SUP> and
+10<SUP>5</SUP> positions.
+Therefore it was possible for us to obtain a huge database of positions by making Stockfish play
+a tournament of about 100 games.</P><P>The positions were recorded in FEN<SUP><A NAME="text10" HREF="#note10">1</A></SUP> format
+which could not be used as inputs to the network directly. Therefore, each
+position was converted into a binary string as follows:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Since there are 12 unique pieces in chess, it is sufficient to use 4
+bits to identify them. For e.g. white king: 0001, white queen: 0010 and so
+on. Empty squares were denoted by 0000.
+</LI><LI CLASS="li-itemize">6 bits were reserved for representing various nuances such as <I>en passant</I>
+availability, castling status, turn to move, etc
+</LI></UL><P>
+This resulted in a binary string of length 262
+(4&#XD7;64+6) which could now be supplied as input to the
+network. A 2-layer backpropagation neural network with 262 inputs and 1 output was created and trained. After learning was complete, 
+the evaluation module of Stockfish was replaced by our network and tournaments 
+were conducted between the original and modified engines.</P><P>It was noted that, even though the network learned some abstract concepts like
+the importance of the queen over a rook, the gameplay was vague since position
+evaluation did not even come close to what was expected. The rate of learning
+was extremely slow and it took 48 hours of training to learn the aforementioned
+queen-rook importance. A 3-layer network showed no improvement.</P><!--TOC section Deep Learning-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc29">3.2</A>:&#XA0;Deep Learning</H2><!--SEC END --><P>
+The computations involved in producing an output from an input can be
+represented by a flow graph: a flow graph is a graph representing a computation,
+in which each node represents an elementary computation and a value which is the
+result of the computation and is usually applied to the children of that node.
+The set of computations allowed in each node and possible graph structures
+defines a family of functions. Input nodes have no children. Output nodes have
+no parents.</P><P>A particular property of such flow graphs is depth: the length of the longest
+path from an input to an output. Traditional feedforward neural networks can be
+considered to have depth equal to the number of layers (i.e. the number of
+hidden layers plus 1, for the output layer). Support Vector Machines (SVMs) have
+depth 2 (one for the kernel outputs or for the feature space, and one for the
+linear combination producing the output).</P><P>Depth 2 is enough in many cases (e.g. logical gates, formal [threshold] neurons,
+sigmoid-neurons, Radial Basis Function [RBF] units like in SVMs) to represent
+any function with a given target accuracy. But this may come with a price: that
+the required number of nodes in the graph (i.e. computations, and also number of
+parameters, when we try to learn the function) may grow very large. Theoretical
+results showed that there exist function-families for which in fact the required
+number of nodes may grow exponentially with the input size.</P><P>We can see deep architectures as a kind of factorization. Most randomly chosen
+functions can&#X2019;t be represented efficiently, whether with a deep or a shallow
+architecture. But many that can be represented efficiently with a deep
+architecture cannot be represented efficiently with a shallow one (see the
+polynomials example in&#XA0;[<A HREF="#28">19</A>]). The existence of a compact and deep
+representation indicates that some kind of structure exists in the underlying function to be
+represented. If there was no structure whatsoever, it would not be possible to
+generalize well&#XA0;[<A HREF="#29">12</A>].</P><!--TOC subsection Convolutional Neural Networks-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc30">3.2.1</A>:&#XA0;Convolutional Neural Networks</H3><!--SEC END --><P>
+Convolutional Neural Networks (CNN) are variants of MLPs. From Hubel and
+Wiesel&#X2019;s early work on the cat&#X2019;s visual cortex&#XA0;[<A HREF="#30">36</A>], we know there exists a
+complex arrangement of cells within the visual cortex. These cells are sensitive
+to small sub-regions of the input space, called a receptive field and are tiled
+in such a way as to cover the entire visual field. These filters are local in
+input space and are thus better suited to exploit the strong spatially local
+correlation.</P><P>CNNs exploit spatially local correlation by enforcing a local connectivity
+pattern between neurons of adjacent layers. The input hidden units in the
+<I>m</I><SUP><I>th</I></SUP> layer are connected to a local subset of units in
+the <I>m</I>&#X2212;1<SUP><I>th</I></SUP> layer, which have spatially contiguous
+receptive fields. We can illustrate this graphically as follows:</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/sparse_1D_nn.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 3.1: A Convolutional Neural Network</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:cnn"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>Imagine that layer <I>m</I>&#X2212;1 is the input retina. In Fig. <A HREF="#fig:cnn">3.1</A>, units in
+layer <I>m</I> have receptive fields of width 3 with respect to the input retina and
+are thus only connected to 3 adjacent neurons in the layer below. Units in layer
+<I>m</I> have a similar connectivity with the layer below. We say that their
+receptive field with respect to the layer below is also 3, but their receptive field with
+respect to the input is larger (it is 5).</P><P>The architecture thus confines the learnt &#X2019;filters&#X2019; (corresponding to the input
+producing the strongest response) to be a spatially local pattern (since each
+unit is unresponsive to variations outside of its receptive field with respect
+to the retina). As shown above, stacking many such layers leads to &#X2019;filters&#X2019;
+(not anymore linear) which become increasingly &#X2019;global&#X2019; (i.e. spanning a larger
+region of pixel space). For example, the unit in hidden layer
+<I>m</I>+1 can encode a non-linear feature of width 5.</P><P>In CNNs, each sparse filter is additionally replicated across the entire
+visual field. These &#X2019;replicated&#X2019; units form a <I>feature map</I>, which share the same
+parametrization, i.e. the same weight vector and the same bias. Replicating
+units in this way allows for features to be detected regardless of their
+position in the input field. Additionally, weight sharing offers a very
+efficient way to do this, since it greatly reduces the number of free parameters
+to learn. By controlling model capacity, CNNs tend to achieve better
+generalization especially in vision problems&#XA0;[<A HREF="#31">7</A>].</P><!--TOC subsection Autoencoders-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc31">3.2.2</A>:&#XA0;Autoencoders</H3><!--SEC END --><P>
+An autoencoder takes an input <I>x</I>&#X2208;[0, 1]<SUP><I>d</I></SUP> and first maps
+it (with an encoder) to a hidden representation <I>y</I>&#X2208;[0,
+1]<SUP><I>d</I>&#X2032;</SUP> through a deterministic mapping, e.g.:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+<I>y</I>&#XA0;=&#XA0;<I>s</I>(<I>Wx</I>+<I>b</I>)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.10)</TD></TR>
+</TABLE><P>
+where <I>s</I> is a non-linearity such as the sigmoid. The latent
+representation <I>y</I>, or code is then mapped back (with a
+decoder) into a reconstruction <I>z</I> of same shape as
+<I>x</I> through a similar transformation, e.g.:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+<I>z</I>&#XA0;=&#XA0;<I>s</I>(<I>W</I>&#X2032;<I>y</I>+<I>b</I>&#X2032;)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.11)</TD></TR>
+</TABLE><P>
+where &#X2032; does not indicate transpose and
+<I>z</I> should be seen as a prediction of
+<I>x</I>, given the code <I>y</I>. The weight
+matrix <I>W</I>&#X2032; of the reverse mapping may be optionally
+constrained by <I>W</I>&#X2032;=<I>W</I><SUP><I>T</I></SUP>, which is an instance of tied
+weights.
+The parameters of this model (namely <I>W</I>, <I>b</I>, <I>b</I>&#X2032; and
+<I>W</I>&#X2032; if we do not use <I>tied weights</I>) are optimized such that
+the average reconstruction error is minimized. The reconstruction error can be 
+measured in many ways, depending on the appropriate distributional assumptions 
+on the input given the code, e.g., using the traditional squared error 
+<I>L</I>(<I>x</I>,<I>z</I>)=||<I>x</I>&#X2212;<I>z</I>||<SUP>2</SUP>, or if the input is interpreted as either
+bit vectors or vectors of bit probabilities by the reconstruction cross-entropy 
+defined as:
+</P><TABLE CLASS="display dcenter"><TR VALIGN="middle"><TD CLASS="dcell">
+<I>L</I><SUB><I>H</I></SUB>(<I>x</I>,<I>z</I>)=&#X2212;</TD><TD CLASS="dcell"><TABLE CLASS="display"><TR><TD CLASS="dcell" ALIGN="center"><I>d</I></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><FONT SIZE=6>&#X2211;</FONT></TD></TR>
+<TR><TD CLASS="dcell" ALIGN="center"><I>k</I>=1</TD></TR>
+</TABLE></TD><TD CLASS="dcell">[<I>x</I><SUB><I>k</I></SUB>log<I>z</I><SUB><I>k</I></SUB>+(1&#X2212;<I>x</I><SUB><I>k</I></SUB>)log(1&#X2212;<I>z</I><SUB><I>k</I></SUB>)]
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(3.12)</TD></TR>
+</TABLE><P>
+The hope is that the code <I>y</I> is a distributed
+representation that captures the coordinates along the main factors of variation in the data (similarly to how 
+the projection on principal components captures the main factors of variation 
+in the data). Due to the fact that <I>y</I> is viewed as a lossy
+compression of <I>x</I>, it cannot be a good compression (with
+small loss) for all <I>x</I>, so learning drives it to be one
+that is a good compression in particular for training examples, and hopefully for others as well, but not for arbitrary inputs. 
+That is the sense in which an auto-encoder generalizes: it gives low 
+reconstruction error to test examples from the same distribution as the 
+training examples, but generally high reconstruction error to uniformly chosen 
+configurations of the input vector.</P><P>If there is one linear hidden layer (the code) and the mean squared error
+criterion is used to train the network, then the <I>k</I> hidden
+units learn to project the input in the span of the first
+<I>k</I> principal components of the data. If the hidden layer is
+non-linear, the auto-encoder behaves differently from PCA<SUP><A NAME="text11" HREF="#note11">2</A></SUP>, with the ability to capture multi-modal aspects of the input distribution. The
+departure from PCA becomes even more
+important when we consider stacking multiple encoders (and their corresponding decoders) when building a deep
+auto-encoder&#XA0;[<A HREF="#32">33</A>]&#XA0;[<A HREF="#33">9</A>].</P><!--TOC subsection Implementation-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc32">3.2.3</A>:&#XA0;Implementation</H3><!--SEC END --><P>
+When shallow neural networks did not show promising results, the reason we 
+attributed for the failure was the absence of an explicit feature extraction 
+process which was omitted deliberately as we did not want the network to have 
+any preconceptions about what it was learning. Therefore deep learning techniques 
+were the obvious choice as they are essentially neural networks with a built-in 
+feature extractor. Another factor influencing this decision was the fact that 
+the features become more abstract as we go deeper into the network. This is how 
+our brain constructs and understands complex concepts. </P><P>Initially 3 CNNs were constructed, each for one stage in the game; opening,
+middle game and end game. This is because the aim of a player at different
+stages of the game varies and it is not feasible for one network to learn
+everything. The idea here was that no matter what the position is, attacks and
+defense always follow a particular pattern. During attacks the king ring is hit
+at least by 2 or more pieces. A good defense consists of king safety, a
+successful castle, strong pawn structures near the king and so on. It is easy to
+see that all of these happen locally i.e. within some quadrant on the board.</P><P>As an example, let us take the king ring parameter. No matter where the king is
+on the board, he is said to be safe with good confidence if the ring is free
+from threats. Since CNNs learn spatially local patterns very well, it was
+expected to learn the underlying features of such positions if they exist.
+Again, due to the lack of computing power and training time, the networks&#X2019;
+learning rate was low.</P><P>A similar process was carried out with Autoencoders and the same problem
+recurred. This failure made us think deeper into the root cause of the problem;
+we were asking the network to recapitulate centuries of chess theory with
+limited data in very limited time just to learn what we already know. Therefore
+we decided to formulate the problem with an entirely different perspective:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+avoid spoon feeding the machine with code to identify features or parameters 
+</LI><LI CLASS="li-itemize">provide a platform which guides the machine to learn the right
+parameters and ignore the rest
+</LI></UL><P>
+This led us to Genetic Algorithms. </P><!--BEGIN NOTES chapter-->
+<HR CLASS="footnoterule"><DL CLASS="thefootnotes"><DT CLASS="dt-thefootnotes">
+<A NAME="note10" HREF="#text10">1</A></DT><DD CLASS="dd-thefootnotes">Forsyth-Edwards Notation
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note11" HREF="#text11">2</A></DT><DD CLASS="dd-thefootnotes">Principle Component Analysis
+</DD></DL>
+<!--END NOTES-->
+<!--TOC chapter Proposed System-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc33">Chapter&#XA0;4</A>:&#XA0;Proposed System</H1><!--SEC END --><P><A NAME="chap:proposed_system"></A></P><!--TOC section Genetic Algorithms-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc34">4.1</A>:&#XA0;Genetic Algorithms</H2><!--SEC END --><P>
+Genetic Algorithms aim mainly at solving optimization problems by means of
+applying the principle of natural selection seen in living organisms.
+Genetic Algorithms borrows heavily from phenomena such as
+adaptability of life to environmental changes, inheritance of the vital
+properties by descendants and of course natural selection, following the
+&#X2019;survival of the fittest&#X2019; paradigm from Darwin&#X2019;s theory of evolution&#XA0;[<A HREF="#34">24</A>].
+In scientific literature, the idea of mimicking evolution to form genetic
+algorithms was first proposed by John Holland in 1975&#XA0;[<A HREF="#35">34</A>]. In his work,
+Holland suggested a schematic of how a genetic algorithm would look like. In 1989, David
+Goldberg created a simple Genetic Algorithm&#XA0;[<A HREF="#36">31</A>] and its first famous
+computer implementation (using Pascal).</P><!--TOC subsection Terminology-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc35">4.1.1</A>:&#XA0;Terminology</H3><!--SEC END --><P>
+In biological systems which act as an inspiration for genetic algorithms,
+<I>chromosomes</I> are seen as the fundamental building blocks. The set of
+chromosomes of a living organism is called the <I>genotype</I> and the
+organisms which posses a particular genotype are called the <I>phenotype</I>.
+The parts constituting a chromosome are referred to as <I>genes</I>, which are
+located on different <I>loci</I>. Each gene controls the inheritance of one or
+several <I>alleles</I>. In artificial genetic systems a different terminology
+is accepted&#XA0;[<A HREF="#36">31</A>]. A comparison between the corresponding terms is given in
+Table <A HREF="#tab:genetic_comparison">4.1.1</A>.</P><BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+		<A NAME="tab:genetic_comparison"></A>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=1><TR><TD VALIGN=top ALIGN=left NOWRAP> <B>Natural Genetics</B></TD><TD VALIGN=top ALIGN=left><B>Genetic Algorithms</B></TD></TR>
+<TR><TD VALIGN=top ALIGN=left NOWRAP>	Phenotype</TD><TD VALIGN=top ALIGN=left>A set of parameters to be optimized</TD></TR>
+<TR><TD VALIGN=top ALIGN=left NOWRAP>	Genotype</TD><TD VALIGN=top ALIGN=left>A population of individuals</TD></TR>
+<TR><TD VALIGN=top ALIGN=left NOWRAP>	Chromosome</TD><TD VALIGN=top ALIGN=left>Individual</TD></TR>
+<TR><TD VALIGN=top ALIGN=left NOWRAP>	Gene</TD><TD VALIGN=top ALIGN=left>A parameter from the set</TD></TR>
+<TR><TD VALIGN=top ALIGN=left NOWRAP>	Locus</TD><TD VALIGN=top ALIGN=left>Position of the parameter (index)</TD></TR>
+<TR><TD VALIGN=top ALIGN=left NOWRAP>	Allele</TD><TD VALIGN=top ALIGN=left>Value of the parameter</TD></TR>
+</TABLE>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Table 4.1: Comparison of Genetic Terminology</TD></TR>
+</TABLE></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><!--TOC subsection Background-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc36">4.1.2</A>:&#XA0;Background</H3><!--SEC END --><P>
+The basic component of a genetic algorithm is the
+<I>individual</I><SUP><A NAME="text12" HREF="#note12">1</A></SUP>. An individual is a potential solution to the problem at hand. A collection of many such
+individuals form a <I>population</I>. Each individual is usually a string of values,
+each of which represents a parameter which is being optimized. Each value is
+called a <I>feature</I> and is identified by an index. Features can be
+whatever makes sense for the problem being solved.</P><P>For example, in&#XA0;[<A HREF="#37">41</A>] a function maximization problem is considered with two
+variables and binary chromosomes<SUP><A NAME="text13" HREF="#note13">2</A></SUP> are used to represent these variables.
+In&#XA0;[<A HREF="#38">23</A>] integer chromosomes are used to solve the N-Queens problem and
+in&#XA0;[<A HREF="#39">27</A>] the chromosome is a specially designed data structure used to
+solve a job scheduling problem. Each of these articles solve different problems 
+using an identical algorithm with the difference being in how they represent potential
+solutions.</P><P>When applying genetic algorithms, the chromosome acts as a storage of features
+i.e. it entirely describes a potential solution. Genetic algorithms operate on
+populations in a temporal manner. A population at any given point in time is
+called a <I>generation</I>. Each individual in a generation is evaluated using
+some fitting criterion. This criterion is unique to the problem at hand. The fittest
+individuals are allowed to reproduce by means of genetic operators and will
+result in the formation of a new generation.</P><P>As new generations are born, the individuals get fitter and hence tend towards
+optimality. This is why choosing the right parameters for the chromosome is
+considered to be the most important activity during the formulation of a genetic
+system. If the wrong parameters are chosen for optimization, the resultant
+values though optimized, will fail to solve the problem.</P><!--TOC subsection Genetic Operators-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc37">4.1.3</A>:&#XA0;Genetic Operators</H3><!--SEC END --><P>
+In genetic algorithms, it is important for individuals to reproduce in a manner
+that will somehow imbibe their traits to the offspring while allowing them to
+have their own individuality. This helps the solutions to avoid local optima and
+eventually reach the global optimum. There are two classical genetic operators
+which allow individuals to do this; <I>Crossover</I> and <I>Mutation</I>.</P><P>At its simplest, crossover takes 2 chromosomes from the current population,
+selects an index randomly which is called the <I>crossover point</I> and interchanges the
+parameters of the parents from that point onwards. To understand the idea
+better, let us consider its visual representation. Assume
+<I>x</I><SUB>1</SUB> and <I>x</I><SUB>2</SUB> are 2 chromosomes of
+length &#X2019;8&#X2019;. Let us also assume that the crossover point is &#X2019;3&#X2019;.
+Now, the chromosome is divided into 2 parts as shown in Fig.
+<A HREF="#fig:crossover">4.1</A>.
+The first part of <I>x</I><SUB>1</SUB> is attached to the second part of
+<I>x</I><SUB>2</SUB> and vice versa to form 2 new individuals or offspring.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/crossover.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.1: A Simple Crossover</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:crossover"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>Mutation is the process of changing some parameters in the chromosome to avoid
+recycling of parameters (after some generations of evolution, there might come a
+point where the parameters remain constant even after crossovers) which will
+ultimately result in the system being stuck in a local optimum. After obtaining
+offspring from crossover, some indices are chosen and the values of the
+parameters at those indices are changed according to some rule. In Fig.
+<A HREF="#fig:mutation">4.2</A>, a single mutation point is chosen (index &#X2019;1&#X2019;) and hence
+the value of the first parameter is flipped.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/mutation.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.2: A Simple Mutation</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:mutation"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>There exist more complex variations of these genetic operators such as two-point
+crossover and two-point mutation. In two-point crossover, a chromosome is
+divided into 3 parts and the middle ones are exchanged. In two-point
+mutation, values at 2 positions are changed. This process can be extended for
+multi-point operators&#XA0;[<A HREF="#37">41</A>].</P><P>There is another genetic operator which is seldom used called <I>Inversion</I>. Simple
+inversion selects 2 points along the length of a chromosome and the parameters
+between these 2 points are reversed&#XA0;[<A HREF="#37">41</A>].</P><!--TOC subsection Evaluation and Selection-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc38">4.1.4</A>:&#XA0;Evaluation and Selection</H3><!--SEC END --><P>
+Before crossover and mutation are applied, each chromosome needs to be
+evaluated and the fittest among them should be separated. This process differs
+from problem to problem. Some of the most popular techniques are:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Choose the fittest individuals and reject the rest
+</LI><LI CLASS="li-itemize">Throw away the poorest performers and keep the rest
+</LI><LI CLASS="li-itemize">Use some randomized heuristics such as Roulette wheel
+selection<SUP><A NAME="text14" HREF="#note14">3</A></SUP>.
+</LI><LI CLASS="li-itemize">Retain the best solution(s) as it is and modify others (called the
+<I>Elitist model</I>). 
+</LI></UL><P>
+There are also other static and dynamic selection methods in which the
+selection probabilities remain constant and vary over the generations, 
+respectively&#XA0;[<A HREF="#37">41</A>]. We can also develop selection procedures tailor made 
+for our problems. One element which remains constant in all these techniques 
+is a function which evaluates the goodness of each potential solution. 
+This function is called the <I>fitness function</I>. Every solution is analyzed and 
+given a <I>fitness value</I> which determines whether it is eligible for reproduction 
+or not.</P><!--TOC section Implementation-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc39">4.2</A>:&#XA0;Implementation</H2><!--SEC END --><!--TOC subsection CuckooChess-->
+<H3 CLASS="subsection"><!--SEC ANCHOR --><A NAME="htoc40">4.2.1</A>:&#XA0;CuckooChess</H3><!--SEC END --><P>
+CuckooChess&#XA0;[<A HREF="#40">43</A>] is an advanced free open source chess program under the
+GNU General Public License written in Java by Peter Osterlund. It contains many
+of the standard algorithms for computer chess discussed previously such as
+iterative deepening, quiescence search with SEE pruning, MVV/LVA move ordering, hash
+table, history heuristic, recursive null moves, opening book and magic bit
+boards. It also uses some advanced techniques like Negascout, aspiration
+windows, futility pruning and late move reductions&#XA0;[<A HREF="#41">8</A>]. We have cloned
+this engine and modified it to suit our needs. These modifications include:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Replacing the entire evaluation module with our new module
+</LI><LI CLASS="li-itemize">Adding a genetic training system with a tournament selector
+</LI><LI CLASS="li-itemize">Adding PVTs<SUP><A NAME="text15" HREF="#note15">4</A></SUP> which is the core of the
+new evaluation function
+</LI><LI CLASS="li-itemize">Modifying search behavior to take advantage of the new PVTs
+</LI><LI CLASS="li-itemize">A tournament simulator which is used for both fitness evaluation and
+testing
+</LI></UL><P>
+Each point is explained in detail in the future sections. Fig.
+<A HREF="#fig:phoenix_flowchart">4.3</A> is a flowchart which gives an overview of what is going on under the hood.
+</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/phoenix_flowchart.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.3: Workflow</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:phoenix_flowchart"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><!--TOC subsubsection Formulation Phase-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Formulation Phase</H4><!--SEC END --><P>
+Usually evaluation functions consider almost if not all the parameters discussed
+in the Positional Parameters section. But we wanted the evaluation to be totally
+dependent on whatever the computer learns on its own and nothing else. Therefore
+we needed to formulate the problem in such a way that the engine itself
+recognizes the relative importance of each parameter. This requirement forced us
+to use PVTs.</P><P>A PVT is a grid of numbers which indicate the best squares for a piece to
+occupy. Greater the number, better is its position. For example,
+Fig. <A HREF="#fig:pvt_knight">4.4</A> shows the PVT for a black knight. It is easy to spot
+that the values at the center of the board are higher than those at the corners. This means it is desirable for
+the knight to be on the central squares rather than the corners.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/pvt_knight.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.4: PVT for a black knight during endgame</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:pvt_knight"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>By carefully constructing these PVTs, we can quantify most of the positional
+parameters. Even though some of the abstract ones such as rook behind a past
+pawn cannot be described using this technique alone, combining this with other
+search algorithms it is possible to get more accurate evaluation scores. This is
+achieved by using PVTs for move ordering by arranging moves in descending order
+of the PVT values for the destination squares.</P><P>It is easy to see that each piece must have its own PVT. Also, most of the
+pieces have different responsibilities at different junctures of the game.
+Therefore it is necessary to maintain different PVTs for middle and end games
+(PVTs for openings are not required as moves are made using opening books).
+Table 4.2 shows the various PVTs that are maintained in our engine.</P><BLOCKQUOTE CLASS="table"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV>
+		<A NAME="tab:PVTs"></A>
+<TABLE BORDER=1 CELLSPACING=0 CELLPADDING=1><TR><TD ALIGN=center NOWRAP> <B>Piece</B></TD><TD ALIGN=center NOWRAP><B>Middle Game</B></TD><TD ALIGN=center NOWRAP><B>End Game</B></TD></TR>
+<TR><TD ALIGN=center NOWRAP>	 Pawn</TD><TD ALIGN=center NOWRAP>&#X2713;</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD></TR>
+<TR><TD ALIGN=center NOWRAP>	 Rook</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD><TD ALIGN=center NOWRAP>&#XD7;</TD></TR>
+<TR><TD ALIGN=center NOWRAP>	 Knight</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD></TR>
+<TR><TD ALIGN=center NOWRAP>	 Bishop</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD></TR>
+<TR><TD ALIGN=center NOWRAP>	 Queen</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD><TD ALIGN=center NOWRAP>&#XD7;</TD></TR>
+<TR><TD ALIGN=center NOWRAP>	 King</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD><TD ALIGN=center NOWRAP>&#X2713;
+</TD></TR>
+</TABLE>
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Table 4.2: PVTs</TD></TR>
+</TABLE></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/2d_to_1d.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.5: PVTs to Chromosome</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:2d_to_1d"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>Every potential solution (player/individual in the population) should have a
+chromosome which will influence its gameplay. A good chromosome will often lead
+to victory where as a bad chromosome will result in a loss. In our program, each
+value in every PVT is considered as a parameter to be optimized. Therefore, all
+the PVTs are joined together to form a chromosome as shown in Fig.
+<A HREF="#fig:2d_to_1d">4.5</A>.</P><P>This is essentially a single dimension array containing 640 floating point
+numbers (we club together the 10 PVTs mentioned in Table 2, each having 64
+values). From here on, the problem of learning reduces to an optimization of
+these 640 values.</P><!--TOC subsubsection Optimization Phase-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Optimization Phase</H4><!--SEC END --><P>
+First, a population of 20 players is created. The players&#X2019; chromosomes are
+randomly initialized. At this stage, the players make random and losing moves.
+They are pit against each other in a round-robin tournament where each player
+plays at least 3 games and the results are recorded. The players get 1 point for
+a win, 0.5 for a draw and 0 for a loss. After the tournament is finished, the
+results are tabulated and these points are used as an indicator of their
+chromosomes&#X2019; fitness level.</P><P>The winner and the runner-up are called <I>elites</I> as they are the best solutions
+found in the current generation and they are retained as it is for the next
+generation. The other players in the top 10 are allowed to reproduce among
+themselves using single-point crossovers with a probability of 0.8 to create 18
+offspring and the previous generation is discarded. Next all the new players
+except the elites undergo randomized mutation with a probability of 0.02. The
+elites and the offspring form the new generation. This process is repeated till
+any of the following end conditions are met:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+1000 generations have passed
+</LI><LI CLASS="li-itemize">The best solution remains the same for 10 or more generations
+</LI><LI CLASS="li-itemize">The rate of change in the best solution chromosome structure is below
+1% for 20 or more generations
+</LI></UL><P>Fig. <A HREF="#fig:evolve">4.6</A> clearly illustrates and summarizes the entire process. One
+problem in this technique is that, it always finds a single solution. But as we know, 
+there is no one right way to play chess. The style of a player who plays attacking 
+chess cannot be compared to that of a player who prefers defensive positional play. 
+Both may be equally good. It is therefore safe to assume that, a mathematical function 
+representing position evaluation (if it exists) is multimodal. Hence it 
+is desirable for us to get solutions representing most if not all the modes of the 
+function.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/evolve.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.6: Evolution Process</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:evolve"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>The problem with simple genetic algorithms is that it will eventually converge
+to one of the many global optima (if they do not get trapped in local
+optima) which depend on the initial population and the random genetic
+drift&#XA0;[<A HREF="#42">44</A>] occurring throughout the run. Eventually we will get copies of
+the same individual in one of the valleys/plateau.</P><P>For instance, consider a simple function <I>f</I>(<I>x</I>)=<I>sin</I>(<I>x</I><SUP>2</SUP>). A
+plot of the function along with the position of the individuals (red marks) trying to find the
+minimum is shown in Fig. <A HREF="#fig:sin_simple">4.7</A> &#XA0;[<A HREF="#43">15</A>].</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/sin_simple.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.7: Potential solutions using simple GA</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:sin_simple"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>As we can see this function has more than one minimum and we want our algorithm
+to find the other minimum as well. This is where the concept of <I>niching</I>
+comes in handy. Niching is a general class of techniques that promote the formation and
+maintenance of stable sub-populations in a genetic algorithm. 2 main objectives
+of such techniques are:</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+To converge to multiple, highly fit, and significantly different
+solutions (for multimodal optimization) 
+</LI><LI CLASS="li-itemize">To slow down convergence in cases where only one solution is required
+(to avoid premature convergence)
+</LI></UL><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/sin_niching.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.8: Potential solutions using niching</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:sin_niching"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>Fig. <A HREF="#fig:sin_niching">4.8</A> shows how individuals have converged onto 2 separate
+optima for <I>f</I>(<I>x</I>)=<I>sin</I>(<I>x</I><SUP>2</SUP>) when using niching. There are
+many approaches to niching and the one used here is called <I>multi-niche crowding
+(MNC)</I>.</P><!--TOC subsubsection Multi-Niche Crowding-->
+<H4 CLASS="subsubsection"><!--SEC ANCHOR -->Multi-Niche Crowding</H4><!--SEC END --><P>
+Crowding&#XA0;[<A HREF="#44">25</A>] is a generalization of pre-selection. In crowding, the
+selection and reproduction processes are the same as those carried out in simple genetic
+algorithms, but the replacement process is different. Let us assume that 2
+parents produce 2 offspring. In order to make room for the newborns, it is
+necessary to identify 2 members from the population for replacement. The policy
+of replacing a member of the present generation by an offspring is carried out
+as follows:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+A group of <I>C</I> individuals is selected at random from the population.
+<I>C</I> is called the crowding factor and a value 2 or 3 appears to work well
+in&#XA0;[<A HREF="#44">25</A>].
+</LI><LI CLASS="li-itemize">The chromosomes of the offspring are compared with those of the <I>C</I>
+individuals in the group using Hamming distance as a measure of similarity. The group member which is most similar to the offspring is replaced by the offspring.
+</LI><LI CLASS="li-itemize">This procedure is repeated for the other offspring as well. 
+</LI></UL><P>Crowding is essentially a successive replacement strategy. This strategy
+maintains the diversity in the population and postpones premature convergence.
+However generic crowding cannot maintain stable subpopulations for long due to
+<I>selection pressure</I><SUP><A NAME="text16" HREF="#note16">5</A></SUP>.</P><P>In multi-niche crowding (MNC), both selection and replacement steps are modified
+with some type of crowding. The idea is to eliminate the selection pressure
+caused by <I>fitness proportionate reproduction (FPR)</I> while allowing the population
+to maintain some diversity. This objective is achieved in part, by encouraging
+mating and replacement within members of the same niche while allowing for some
+competition for slots among the niches. The result is an algorithm that (a)
+maintains stable subpopulations within different niches, (b) maintains diversity
+throughout the search, and (c) converges to different optima.</P><P>In MNC, the FPR selection is replaced by what is called <I>crowding selection</I>. In
+crowding selection, each individual in the population has the same chance for
+mating in every generation. Application of this selection rule takes place in
+two steps. First, an individual <I>A</I> is selected for mating. This selection can
+be either sequential or random. Second, its mate <I>M</I> is selected, not from the
+entire population, but from a group of individuals of size <I>C</I><SUB><I>s</I></SUB>, picked at
+random (with replacement) from the population. The mate <I>M</I> thus chosen must be the one who
+is the most &#X2019;similar&#X2019; to <I>A</I>. The similarity metric used here is not a
+<I>genotypic</I> metric such as the Hamming distance, but a suitably defined <I>phenotypic</I> distance
+metric. Crowding selection promotes mating between individuals from the same
+niche while allowing mating between individuals from different niches.</P><P>During the replacement step, MNC uses a replacement policy called <I>worst among
+the most similar</I>. The goal of this step is to pick an individual from the
+population for replacement by an offspring. Implementation of this policy
+follows these steps. First, <I>C</I><SUB><I>f</I></SUB> groups are created by randomly picking <I>s</I>
+individuals (with replacement) per group from the population. These groups are
+called <I>crowding factor groups</I>. Second, one individual from each group that is
+most phenotypically similar to the offspring is identified. This gives <I>C</I><SUB><I>f</I></SUB>
+individuals that are candidates for replacement by virtue of their similarity to
+the offspring that will replace them. From this group of most similar
+individuals, we pick the one with the lowest fitness to die and that slot is
+filled with the offspring. The offspring could possibly have a lower fitness
+than the individual being replaced&#XA0;[<A HREF="#45">21</A>].</P><P>Thus, we replace our vanilla genetic algorithm with MNC which helped us find
+multiple optimal solutions which are then stored in a database of chromosomes
+(the details of best chromosome found in all the runs can be found in Appendix
+<A HREF="#apdx">A</A>). When the chess engine is asked to play, it selects one from the
+database and re-forms PVTs from the chromosome and uses it to make moves.</P><!--TOC section Results-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc41">4.3</A>:&#XA0;Results</H2><!--SEC END --><P>
+The best way to test a chess engine is to make it play against other engines.
+This can be daunting and painfully slow if there is no common language through
+which the engines can communicate. In chess programming circles, there exist 2
+protocols which are used as standards while building chess engines. They are:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+Universal Chess Interface (UCI)
+</LI><LI CLASS="li-itemize">Chess Engine Communication Protocol (used in XBoard and WinBoard)
+</LI></UL><P>
+UCI is more robust and is supported by most of the prominent engines today.
+Therefore our engine also communicates through UCI. More information about this 
+protocol can be found in&#XA0;[<A HREF="#46">14</A>]. Many chess GUIs also are UCI compatible and
+hence it is easy to plug our engine into a GUI such as Arena&#XA0;[<A HREF="#47">1</A>] and
+actually see the games being played, rather than read the PGN.</P><P>Our engine was tested against the original CuckooChess engine as it would
+provide us with a clear benchmark about any improvements achieved. A total of
+1000 games were played and recorded with a time control of 3 seconds per move.
+The games were then analyzed using the EloStat algorithm developed by Frank
+Schubert. This algorithm calculates the Elo rating&#XA0;[<A HREF="#48">10</A>] of a player
+provided the rating of the opponent is known. The results are tabulated below.</P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="Images/result1000.png"></DIV>
+
+<DIV CLASS="caption"><TABLE CELLSPACING=6 CELLPADDING=0><TR><TD VALIGN=top ALIGN=left>Figure 4.9: EloStat Result</TD></TR>
+</TABLE></DIV>
+<A NAME="fig:result"></A>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><P>CuckooChess is rated at 2530 according to CCRL (Computer Chess Ratings List). 
+After 1000 games, it was seen that our modified engine outperformed its parent 
+with a rating of 2546 (an increase of 19 points). This rating puts our engine 
+in the &#X2019;International Grandmaster&#X2019; category. A link to the PGN of all the games
+played can be found in Appendix <A HREF="#apdx">A</A>.</P><P>Even though the increase in rating seems small, it should be noted that the rise
+in rating is tapered off gradually when large number of games are played
+with an opponent of similar strength. It can be seen that our engine has won
+422 games compared to the 328 games won by CuckooChess. This indicates that
+there is a considerable increase in the strength of our modified engine.</P><P>Also it has to be noted that the solution we obtained is not optimal. It can be
+seen clearly in the chromosome (see Appendix <A HREF="#apdx">A</A>), where some parts of the
+PVTs seem random. This is because it is not possible for the algorithm to find out
+which mutations will help and which do not. This will result in the replacement
+of some good values with random ones. Therefore there is still room for
+improvement in the engine if we can find a way to mutate only bad genes.</P><!--BEGIN NOTES chapter-->
+<HR CLASS="footnoterule"><DL CLASS="thefootnotes"><DT CLASS="dt-thefootnotes">
+<A NAME="note12" HREF="#text12">1</A></DT><DD CLASS="dd-thefootnotes">Here the words chromosome and individual are used interchangeably
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note13" HREF="#text13">2</A></DT><DD CLASS="dd-thefootnotes">Individuals whose parameters take
+binary values
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note14" HREF="#text14">3</A></DT><DD CLASS="dd-thefootnotes">Here, better solutions have higher probability of selection
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note15" HREF="#text15">4</A></DT><DD CLASS="dd-thefootnotes">Positional Value Tables
+</DD><DT CLASS="dt-thefootnotes"><A NAME="note16" HREF="#text16">5</A></DT><DD CLASS="dd-thefootnotes">Any cause that reduces reproductive success in a
+portion of the population
+</DD></DL>
+<!--END NOTES-->
+<!--TOC chapter Conclusion-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc42">Chapter&#XA0;5</A>:&#XA0;Conclusion</H1><!--SEC END --><P><A NAME="chap:conclusion"></A>
+This thesis provides a new perspective for designing complex self-learning
+programs whose purpose is to mimic human behavior. As we can see in the results
+section, the engine is not a world class one by any stretch of imagination. But
+it was never meant to be. The intention was to find a way to reduce abstract and
+complex concepts of chess into something that a computer understands.</P><P>Shallow and deep neural networks which are considered to be the future of
+machine learning and computer vision failed to give good results here probably
+because:
+</P><UL CLASS="itemize"><LI CLASS="li-itemize">
+The features are not spatially correlated which means that it is not
+easy to recognize patterns 
+</LI><LI CLASS="li-itemize">A universal mathematical function for chess evaluation does not exist.
+If it does, its dimensionality will be so high that it would require extremely 
+large networks, huge training data and very long training phases for any
+learning to happen 
+</LI><LI CLASS="li-itemize">Learning happens only when the input given to networks have a direct
+relation with what is to be learnt. In chess however, no such relation exists 
+among the squares, pieces and positions
+</LI></UL><P>
+The &#X2019;no external help&#X2019; and &#X2019;no explicit feature extraction&#X2019; rules which we
+abided by forced us to convert a learning problem into a problem of optimization. 
+We found a clever way to formulate the problem in such a way that all the positional 
+and other parameters were converted into a group of numbers using PVTs. Multimodal 
+optimization of a large number of parameters seems to be an area where research has 
+come to a standstill in recent years with many open questions left to be answered. 
+Multi-Niching and Crowding which give us the best shot at solving such problems 
+allowed us to optimize parameters efficiently. </P><P>This work concentrates only on learning chess evaluation. The underlying search
+algorithms remain the same. In the future, one can extend the engine by using
+some heuristic similar to PVTs which stores information about position patterns
+and eliminate or at least minimize the role of complex search techniques
+like iterative deepening. Also, one could increase the efficiency of search
+algorithms by pruning out moves using past experience and avoid futile
+evaluations which will speed up the engine.</P><!--TOC chapter References-->
+<H1 CLASS="chapter"><!--SEC ANCHOR -->References</H1><!--SEC END --><DL CLASS="thebibliography"><DT CLASS="dt-thebibliography">
+<A NAME="47"><FONT COLOR=purple>[1]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Arena
+<A HREF="http://www.playwitharena.com/">http://www.playwitharena.com/</A></DD><DT CLASS="dt-thebibliography"><A NAME="26"><FONT COLOR=purple>[2]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Artificial neural networks/error-correction learning.
+<A HREF="http://en.wikibooks.org/wiki/Artificial_Neural_Networks/Error-Correction_Learning">http://en.wikibooks.org/wiki/Artificial_Neural_Networks/Error-Correction_Learning</A></DD><DT CLASS="dt-thebibliography"><A NAME="25"><FONT COLOR=purple>[3]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Artificial neural networks/neural network basics.
+<A HREF="http://en.wikibooks.org/wiki/Artificial_Neural_Networks/Neural_Network_Basics">http://en.wikibooks.org/wiki/Artificial_Neural_Networks/Neural_Network_Basics</A></DD><DT CLASS="dt-thebibliography"><A NAME="12"><FONT COLOR=purple>[4]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Board representation.
+<A HREF="https://chessprogramming.wikispaces.com/Board+Representation">https://chessprogramming.wikispaces.com/Board+Representation</A></DD><DT CLASS="dt-thebibliography"><A NAME="5"><FONT COLOR=purple>[5]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Chess club.
+<A HREF="http://www6.chessclub.com/help/PGN-spec">http://www6.chessclub.com/help/PGN-spec</A></DD><DT CLASS="dt-thebibliography"><A NAME="4"><FONT COLOR=purple>[6]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Chess notation.
+<A HREF="http://en.wikipedia.org/wiki/Chess_notation">http://en.wikipedia.org/wiki/Chess_notation</A></DD><DT CLASS="dt-thebibliography"><A NAME="31"><FONT COLOR=purple>[7]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Convolutional neural networks.
+<A HREF="http://www.deeplearning.net/tutorial/lenet.html#lenet">http://www.deeplearning.net/tutorial/lenet.html#lenet</A></DD><DT CLASS="dt-thebibliography"><A NAME="41"><FONT COLOR=purple>[8]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Cuckoochess wiki.
+<A HREF="http://chessprogramming.wikispaces.com/CuckooChess">http://chessprogramming.wikispaces.com/CuckooChess</A></DD><DT CLASS="dt-thebibliography"><A NAME="33"><FONT COLOR=purple>[9]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Denoising autoencoders.
+<A HREF="http://www.deeplearning.net/tutorial/dA.html#autoencoders">http://www.deeplearning.net/tutorial/dA.html#autoencoders</A></DD><DT CLASS="dt-thebibliography"><A NAME="48"><FONT COLOR=purple>[10]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Elo rating system.
+<A HREF="http://en.wikipedia.org/wiki/Elo_rating_system">http://en.wikipedia.org/wiki/Elo_rating_system</A></DD><DT CLASS="dt-thebibliography"><A NAME="1"><FONT COLOR=purple>[11]</FONT></A></DT><DD CLASS="dd-thebibliography">
+History of chess.
+<A HREF="http://en.wikipedia.org/wiki/History_of_chess">http://en.wikipedia.org/wiki/History_of_chess</A></DD><DT CLASS="dt-thebibliography"><A NAME="29"><FONT COLOR=purple>[12]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Introduction to deep learning algorithms.
+<A HREF="http://www.iro.umontreal.ca/pift6266/H10/notes/deepintro.html">http://www.iro.umontreal.ca/pift6266/H10/notes/deepintro.html</A></DD><DT CLASS="dt-thebibliography"><A NAME="27"><FONT COLOR=purple>[13]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Stockfish: Powerful open source chess engine.
+<A HREF="http://stockfishchess.org/">http://stockfishchess.org/</A></DD><DT CLASS="dt-thebibliography"><A NAME="46"><FONT COLOR=purple>[14]</FONT></A></DT><DD CLASS="dd-thebibliography">
+The uci protocol.
+<A HREF="http://wbec-ridderkerk.nl/html/UCIProtocol.html">http://wbec-ridderkerk.nl/html/UCIProtocol.html</A></DD><DT CLASS="dt-thebibliography"><A NAME="43"><FONT COLOR=purple>[15]</FONT></A></DT><DD CLASS="dd-thebibliography">
+What is niching scheme?
+<A HREF="http://stackoverflow.com/questions/13775810/what-is-niching-scheme">http://stackoverflow.com/questions/13775810/what-is-niching-scheme</A></DD><DT CLASS="dt-thebibliography"><A NAME="3"><FONT COLOR=purple>[16]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Wheat and chessboard problem.
+<A HREF="http://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#Origin_and_story">http://en.wikipedia.org/wiki/Wheat_and_chessboard_problem#Origin_and_story</A></DD><DT CLASS="dt-thebibliography"><A NAME="2"><FONT COLOR=purple>[17]</FONT></A></DT><DD CLASS="dd-thebibliography">
+V.&#XA0;Anand.
+The indian defense.
+<A HREF="http://www.chess.com/article/view/where-was-chess-invented">http://www.chess.com/article/view/where-was-chess-invented</A></DD><DT CLASS="dt-thebibliography"><A NAME="22"><FONT COLOR=purple>[18]</FONT></A></DT><DD CLASS="dd-thebibliography">
+D.&#XA0;Beal.
+Experiments with the null move.
+pages 65&#X2013;79, 1989.</DD><DT CLASS="dt-thebibliography"><A NAME="28"><FONT COLOR=purple>[19]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Y.&#XA0;Bengio.
+Learning deep architectures for ai.
+<EM>Foundations and Trends in Machine Learning</EM>, 2(1):1&#X2013;127, 2009.</DD><DT CLASS="dt-thebibliography"><A NAME="20"><FONT COLOR=purple>[20]</FONT></A></DT><DD CLASS="dd-thebibliography">
+H.&#XA0;Berliner.
+Chess as problem solving: The development of a tactics analyzer.
+Technical report, Carnegie-Mellon University, Pittsburgh,, 1974.</DD><DT CLASS="dt-thebibliography"><A NAME="45"><FONT COLOR=purple>[21]</FONT></A></DT><DD CLASS="dd-thebibliography">
+W.&#XA0;Cedeno, V.&#XA0;Rao, and T.&#XA0;Slezak.
+Multi-niche crowding in genetic algorithms and its application to the
+assembly of dna restriction-fragments.
+Technical report, University of California, Davis.</DD><DT CLASS="dt-thebibliography"><A NAME="10"><FONT COLOR=purple>[22]</FONT></A></DT><DD CLASS="dd-thebibliography">
+J.&#XA0;Condon and K.&#XA0;Thompson.
+Belle chess hardware.
+<EM>Advances in Computer Chess</EM>, (3):45&#X2013;54, 1982.</DD><DT CLASS="dt-thebibliography"><A NAME="38"><FONT COLOR=purple>[23]</FONT></A></DT><DD CLASS="dd-thebibliography">
+K.&#XA0;Crawford.
+Solving the n-queens problem using genetic algorithms.
+<EM>Proceedings of ACM/SIGAPP Symposium on Applied Computing</EM>, pages
+1039&#X2013;1047, 1992.</DD><DT CLASS="dt-thebibliography"><A NAME="34"><FONT COLOR=purple>[24]</FONT></A></DT><DD CLASS="dd-thebibliography">
+C.&#XA0;Darwin.
+<EM>The Origin of Species</EM>.
+Murray, London,, 1859.</DD><DT CLASS="dt-thebibliography"><A NAME="44"><FONT COLOR=purple>[25]</FONT></A></DT><DD CLASS="dd-thebibliography">
+K.&#XA0;DeJong.
+An analysis of the behavior of a class of genetic adaptive systems.
+Technical report, University of Michigan.</DD><DT CLASS="dt-thebibliography"><A NAME="23"><FONT COLOR=purple>[26]</FONT></A></DT><DD CLASS="dd-thebibliography">
+C.&#XA0;Donninger.
+Null move and deep search: Selective search heuristics for obtuse
+chess programs.
+16(3):137&#X2013;143, 1993.</DD><DT CLASS="dt-thebibliography"><A NAME="39"><FONT COLOR=purple>[27]</FONT></A></DT><DD CLASS="dd-thebibliography">
+E.&#XA0;Falkenauer and S.&#XA0;Bouffouix.
+A genetic algorithm for job shop.
+<EM>Proceedings of IEEE International Conference on Robotics and
+Automation</EM>, pages 824&#X2013;829, 1991.</DD><DT CLASS="dt-thebibliography"><A NAME="13"><FONT COLOR=purple>[28]</FONT></A></DT><DD CLASS="dd-thebibliography">
+P.&#XA0;Frey.
+Chess skill in man and machine.
+1977.</DD><DT CLASS="dt-thebibliography"><A NAME="9"><FONT COLOR=purple>[29]</FONT></A></DT><DD CLASS="dd-thebibliography">
+F.&#XA0;Friedel.
+A short history of computer chess.
+<A HREF="http://www.chessbase.com/columns/column.asp?pid=102">.</A></DD><DT CLASS="dt-thebibliography"><A NAME="24"><FONT COLOR=purple>[30]</FONT></A></DT><DD CLASS="dd-thebibliography">
+G.&#XA0;Goestch and M.&#XA0;Campbell.
+Experiments with the null-move heuristic.
+<EM>Computers, Chess, and Cognition</EM>, pages 159&#X2013;168, 1990.</DD><DT CLASS="dt-thebibliography"><A NAME="36"><FONT COLOR=purple>[31]</FONT></A></DT><DD CLASS="dd-thebibliography">
+D.&#XA0;Goldberg.
+Genetic algorithms in search, optimization and machine learning.
+1989.</DD><DT CLASS="dt-thebibliography"><A NAME="17"><FONT COLOR=purple>[32]</FONT></A></DT><DD CLASS="dd-thebibliography">
+E.&#XA0;Heinz.
+Scalable search in computer chess.
+2000.</DD><DT CLASS="dt-thebibliography"><A NAME="32"><FONT COLOR=purple>[33]</FONT></A></DT><DD CLASS="dd-thebibliography">
+G.&#XA0;Hinton and R.&#XA0;Salakhutdinov.
+Reducing the dimensionality of data with neural networks.
+<EM>Science</EM>, 313(5786):504&#X2013;507, July 2006.</DD><DT CLASS="dt-thebibliography"><A NAME="35"><FONT COLOR=purple>[34]</FONT></A></DT><DD CLASS="dd-thebibliography">
+J.&#XA0;Holland.
+Adaptation in natural and artificial systems.
+1975.</DD><DT CLASS="dt-thebibliography"><A NAME="11"><FONT COLOR=purple>[35]</FONT></A></DT><DD CLASS="dd-thebibliography">
+F.&#XA0;Hsu.
+Behind deep blue: Building the computer that defeated the world chess
+champion.
+2002.</DD><DT CLASS="dt-thebibliography"><A NAME="30"><FONT COLOR=purple>[36]</FONT></A></DT><DD CLASS="dd-thebibliography">
+D.&#XA0;Hubel and T.&#XA0;Wiesel.
+Receptive fields and functional architecture of monkey striate
+cortex.
+<EM>Journal of Physiology</EM>, 195:215&#X2013;243, 1968.</DD><DT CLASS="dt-thebibliography"><A NAME="16"><FONT COLOR=purple>[37]</FONT></A></DT><DD CLASS="dd-thebibliography">
+D.&#XA0;Knuth and R.&#XA0;Moore.
+An analysis of alpha-beta pruning.
+<EM>Artificial Intelligence</EM>, 6(4):293&#X2013;326, 1975.</DD><DT CLASS="dt-thebibliography"><A NAME="6"><FONT COLOR=purple>[38]</FONT></A></DT><DD CLASS="dd-thebibliography">
+R.&#XA0;Levinson.
+The role of chess in artificial intelligence research.
+Technical report.</DD><DT CLASS="dt-thebibliography"><A NAME="14"><FONT COLOR=purple>[39]</FONT></A></DT><DD CLASS="dd-thebibliography">
+A.&#XA0;Linhares.
+Data mining of chess chunks: A novel distance-based structure, 2003.</DD><DT CLASS="dt-thebibliography"><A NAME="19"><FONT COLOR=purple>[40]</FONT></A></DT><DD CLASS="dd-thebibliography">
+T.&#XA0;Marsland.
+Computer chess and search.
+1991.</DD><DT CLASS="dt-thebibliography"><A NAME="37"><FONT COLOR=purple>[41]</FONT></A></DT><DD CLASS="dd-thebibliography">
+Z.&#XA0;Michalewicz.
+<EM>Genetic Algorithms + Data Structures = Evolution Programs</EM>.
+Springer-Verlag, 1996.</DD><DT CLASS="dt-thebibliography"><A NAME="15"><FONT COLOR=purple>[42]</FONT></A></DT><DD CLASS="dd-thebibliography">
+A.&#XA0;Newell, J.&#XA0;Shaw, and H.&#XA0;Simon.
+Chess playing programs and the problem of complexity.
+<EM>IBM Journal of Research and Development</EM>, pages 320&#X2013;335, 1958.</DD><DT CLASS="dt-thebibliography"><A NAME="40"><FONT COLOR=purple>[43]</FONT></A></DT><DD CLASS="dd-thebibliography">
+P.&#XA0;Osterlund.
+cuckoochess.
+<A HREF="https://code.google.com/p/cuckoochess/">https://code.google.com/p/cuckoochess/</A></DD><DT CLASS="dt-thebibliography"><A NAME="42"><FONT COLOR=purple>[44]</FONT></A></DT><DD CLASS="dd-thebibliography">
+A.&#XA0;Rogers and A.&#XA0;Prugel-Bennett.
+Genetic drift in genetic algorithm selection schemes.
+<EM>IEEE Transactions on Evolutionary Computation</EM>.</DD><DT CLASS="dt-thebibliography"><A NAME="7"><FONT COLOR=purple>[45]</FONT></A></DT><DD CLASS="dd-thebibliography">
+C.&#XA0;Shannon, 1950.</DD><DT CLASS="dt-thebibliography"><A NAME="8"><FONT COLOR=purple>[46]</FONT></A></DT><DD CLASS="dd-thebibliography">
+A.&#XA0;Turing, C.&#XA0;Bates, and B.&#XA0;Bowden.
+Digital computers applied to games.
+1953.</DD><DT CLASS="dt-thebibliography"><A NAME="21"><FONT COLOR=purple>[47]</FONT></A></DT><DD CLASS="dd-thebibliography">
+A.&#XA0;Turing, C.&#XA0;Strachey, M.&#XA0;Bates, and B.&#XA0;Bowden.
+<EM>Digital Computers Applied to Games</EM>.
+Pitman, 1953.</DD><DT CLASS="dt-thebibliography"><A NAME="18"><FONT COLOR=purple>[48]</FONT></A></DT><DD CLASS="dd-thebibliography">
+A.&#XA0;Zobrist.
+A new hashing method with application for game playing.
+<EM>ICCA Journal</EM>, 13(2):69&#X2013;73, 1990.</DD></DL><!--TOC chapter Appendix-->
+<H1 CLASS="chapter"><!--SEC ANCHOR --><A NAME="htoc43">Appendix&#XA0;A</A></H1><!--SEC END --><P><A NAME="apdx"></A>
+</P><!--TOC section Links-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc44">A.1</A>:&#XA0;Links</H2><!--SEC END --><UL CLASS="itemize"><LI CLASS="li-itemize">
+Phoenix vs. CuckooChess PGN<BR>
+ https://github.com/rahular/phoenix/blob/master/games/PhoenixGames1000.pgn
+</LI><LI CLASS="li-itemize">Source Code<BR>
+https://github.com/rahular/phoenix
+</LI></UL><!--TOC section Best chromosome-->
+<H2 CLASS="section"><!--SEC ANCHOR --><A NAME="htoc45">A.2</A>:&#XA0;Best chromosome</H2><!--SEC END --><P> 
+The engine played its best chess when this chromosome was used. As we can see,
+some sections of PVTs seem random. This is due to the fact that even after
+1000 generations of evolution, this solution is sub-optimal. </P><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/PVTs/kmg.png"></DIV>
+
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2><IMG SRC="./Images/PVTs/qmg.png"></DIV>
+
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>>
+<IMG SRC="./Images/PVTs/rmg.png"></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>
+<IMG SRC="./Images/PVTs/bmg.png"></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>
+<IMG SRC="./Images/PVTs/nmg.png"></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>
+<IMG SRC="./Images/PVTs/pmg.png"></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>
+<IMG SRC="./Images/PVTs/keg.png"></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>
+<IMG SRC="./Images/PVTs/beg.png"></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>
+<IMG SRC="./Images/PVTs/neg.png"></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><BLOCKQUOTE CLASS="figure"><DIV CLASS="center"><DIV CLASS="center"><HR WIDTH="80%" SIZE=2>
+<IMG SRC="./Images/PVTs/peg.png"></DIV>
+<DIV CLASS="center"><HR WIDTH="80%" SIZE=2></DIV></DIV></BLOCKQUOTE><!--CUT END -->
+<!--HTMLFOOT-->
+<!--ENDHTML-->
+<!--FOOTER-->
+<HR SIZE=2><BLOCKQUOTE CLASS="quote"><EM>This document was translated from L<sup>A</sup>T<sub>E</sub>X by
+</EM><A HREF="http://hevea.inria.fr/index.html"><EM>H</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>V</EM><EM><FONT SIZE=2><sup>E</sup></FONT></EM><EM>A</EM></A><EM>.</EM></BLOCKQUOTE></BODY>
+</HTML>
